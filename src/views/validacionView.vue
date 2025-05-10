@@ -143,6 +143,7 @@ export default{
           'Authorization': this.$store.state.token
         }
         }).then((result)=>{
+          console.log(result)
           this.$socket.emit('send_cart',true)
           this.$router.push({name: 'venta_detalle',params:{id:result.data.id}})
         })
