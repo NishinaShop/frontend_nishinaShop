@@ -12,7 +12,7 @@
                 :key="index" 
                 @click="galeria.unshift(galeria.splice(index, 1)[0])">
             <img class="img-fluid" 
-                 :src="$url+'/obtener_galeria_producto/'+img.imagen" 
+                 :src="img.imagen" 
                  :alt="'Miniatura '+(index+1)">
         </button>
     </div>
