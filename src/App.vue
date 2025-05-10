@@ -2,9 +2,9 @@
   <div id="app"> 
     <topHeader />
   </div>
-  <main class="main-content">
+  
       <router-view />
-    </main>
+    
   <bottomFooter />
 </template>
 <script>
