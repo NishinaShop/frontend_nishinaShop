@@ -161,10 +161,10 @@ export default {
         this.detalles = result.detalles
         this.acceso= true
         this.n_orden = result.venta.serie
-        console.log(result.data)
-        this.load_data = false;
-        }
+        console.log(result)
         
+        }
+        this.load_data = false;
       })
     },
     cDate(item){
