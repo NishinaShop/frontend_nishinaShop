@@ -32,7 +32,7 @@
                data-title="Modern Jacket 1 - Caption text" 
                data-gallery="product-gallery">
                 <img class="img-fluid" 
-                     :src="+galeria[0].imagen" 
+                     :src="galeria[0].imagen" 
                      alt="Modern Jacket 1">
             </a>
         </div>

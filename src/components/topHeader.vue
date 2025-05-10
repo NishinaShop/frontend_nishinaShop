@@ -132,15 +132,14 @@
               <a
                 href="/index.html"
                 aria-current="page"
-                class="site-logo-wrapper-hide-in-mobile w-nav-brand w--current"
+                class="site-logo-wrapper-hide-in-mobile w--current"
                 aria-label="home"
               >
                 <img
                   src="../assets/img/nishina-logo.png"
                   loading="lazy"
-                  width="150"
-                  alt=""
-                  class="img-fluid"
+                  style="width: 200px !important;"
+                  class="img-fluid-logo"
                 />
               </a>
               <ul role="list" class="nav-menu w-list-unstyled">
@@ -266,10 +265,10 @@
               </div>
             </div> -->
             <div class="nav-item dropdown"><router-link class="navbar-icon-link d-lg-none" to="/detalles_carrito"> 
-              <img src="../../public/assets/index_files/66bf2a3553dec5e95df2d69c_bag.svg" alt="Carrito de compras" class="img-icon">
+              <img src="https://res.cloudinary.com/dqitdaxd8/image/upload/3042571_shkf71.png" alt="Carrito de compras" class="img-icon-head">
               <span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none">Ver carrito</span></router-link>
                 <div class="d-none d-lg-block"><a class="navbar-icon-link" id="cartdetails" href="cart.html" data-bs-target="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img src="../../public/assets/index_files/66bf2a3553dec5e95df2d69c_bag.svg" alt="Carrito de compras" class="img-icon">
+                  <img src="https://res.cloudinary.com/dqitdaxd8/image/upload/3042571_shkf71.png" alt="Carrito de compras" class="img-icon-head">
                     <div class="navbar-icon-link-badge">{{ count_cart }}                       </div></a>
                   <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end p-4" aria-labelledby="cartdetails">
                     <div class="navbar-cart-product-wrapper">
@@ -380,7 +379,16 @@
     </div>
   </div>
 </template>
-
+<style>
+.img-fluid-logo {
+max-width: 150px;
+    height: auto;
+}
+.img-icon-head{
+  max-width: 25px;
+    height: auto;
+}
+</style>
 <script>
 import axios from 'axios'
 var currencyFormatter = require ('currency-formatter');

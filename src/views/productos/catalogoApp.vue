@@ -52,26 +52,10 @@
                     alt="product"
                   />
                   <div class="product-hover-overlay">
-                    <a
+                    <router-link  :to="{name: 'detalles_producto',params:{slug: item.slug}}"
                       class="product-hover-overlay-link"
-                      href="detail.html"
-                    ></a>
-                    <div class="product-hover-overlay-buttons">
-                      <a
-                        class="btn btn-outline-dark btn-product-left d-none d-sm-inline-block"
-                        href="#"
-                        ><i class="fa fa-shopping-cart"></i></a
-                      ><router-link class="btn btn-dark btn-buy"  :to="{name: 'detalles_producto',params:{slug: item.slug}}">
-                          <i class="fa-search fa"></i>                            
-                          <span class="btn-buy-label ms-2">Ver</span></router-link>
-                      <a
-                        class="btn btn-outline-dark btn-product-right d-none d-sm-inline-block"
-                        href="#"
-                        data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"
-                        ><i class="fa fa-expand-arrows-alt"></i
-                      ></a>
-                    </div>
+                    ></router-link>
+                    
                   </div>
                 </div>
                 <div class="py-2">
