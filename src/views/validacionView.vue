@@ -97,7 +97,7 @@ export default{
             this.total = this.total + subtotal 
             this.detalles.push({
               subtotal: subtotal,
-              precio_unida: item.producto.precio,
+              precio_unidad: item.producto.precio,
               cantidad: item.cantidad,
               cliente: this.venta.cliente,
               producto: item.producto._id,

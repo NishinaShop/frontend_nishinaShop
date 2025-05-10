@@ -48,7 +48,7 @@
                   <div v-if="!item.estado"></div>
                   <img
                     class="img-fluid"
-                    :src="sitem.portada"
+                    :src="item.portada"
                     alt="product"
                   />
                   <div class="product-hover-overlay">
