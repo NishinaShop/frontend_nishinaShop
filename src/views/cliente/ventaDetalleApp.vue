@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="load_data">
+    <div v-if="!load_data">
      <div v-if="acceso">
       <section class="hero">
       <div class="container">
@@ -115,7 +115,7 @@
       </div>
      </div> 
     </div>  
-    <div v-if="!load_data">
+    <div v-if="load_data">
       <div class="container mb-6 mt-6" >
         <div class="row">
           <div class="col-12 text-center">
