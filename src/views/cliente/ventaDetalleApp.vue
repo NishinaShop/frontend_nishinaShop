@@ -147,6 +147,7 @@ export default {
   },
   methods:{
     init_venta(){
+      this.load_data = true;
       axios.get(this.$url+'/obtener_venta/'+this.$route.params.id,{
         headers:{
           'Content-Type': 'application/JSON',
@@ -160,7 +161,9 @@ export default {
         this.detalles = result.data.detalles
         this.acceso= true
         this.n_orden = result.data.venta.serie
+        console.log(result.data)
         }
+        this.load_data = false;
       })
     },
     cDate(item){

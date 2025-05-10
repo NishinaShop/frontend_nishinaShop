@@ -69,7 +69,7 @@
                 </div>
               </div>
             </div>
-            <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row"><router-link class="btn  btn-dark" to="/detalles_carrito"> <i class="fa fa-angle-left me-2" ></i>Regresar al carrito</router-link><a class="btn btn-dark" href="checkout5.html">Generar la orden<i class="fa fa-angle-right ms-2"></i></a></div>
+            <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row"><router-link class="btn  btn-dark" to="/detalles_carrito"> <i class="fa fa-angle-left me-2" ></i>Regresar al carrito</router-link><a class="btn btn-dark" href="checkout5.html">Pagar via SPEI<i class="fa fa-angle-right ms-2"></i></a></div>
           </div>
           <div class="col-lg-4">
             <div class="block mb-5">
@@ -97,7 +97,7 @@
                     <span class="d-block  mb-2" style="letter-spacing: 0px;font-weight: 600;">Tarjeta de crédito o débito</span>
                       <div class="row">
                           <div class="col-12 mb-2">
-                              <img style="width: 180px">
+                              <img src="https://res.cloudinary.com/dqitdaxd8/image/upload/version-horizontal-large-logo-mercado-pago_ls4tf2.webp" style="width: 180px">
                           </div>
                           <div class="col-12">
                               <p class="text-muted" style="font-size: 13px">
@@ -115,7 +115,7 @@
   
               </div>
               <div class="block-footer">
-                <a  class="btn btn-dark" id="btnBuy" style="cursor:pointer;width: 100%;" v-on:click="mecadopago() ">PAGAR</a>
+                <a  class="btn btn-dark" id="btnBuy" style="cursor:pointer;width: 100%;" v-on:click="mecadopago() ">PAGAR CON MERCADO PAGO</a>
                <div class="text-danger text-center"><span>{{ msn_error }}</span></div>
               </div>
             </div>
