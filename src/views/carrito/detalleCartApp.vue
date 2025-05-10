@@ -32,7 +32,7 @@
                   <div class="" v-for="item in carrito">
                     <div class="row d-flex align-items-center text-center">
                       <div class="col-5">
-                        <div class="d-flex align-items-center"><router-link :to="{name: 'detalles_producto',params:{slug: item.producto.slug}}"><img class="cart-item-img" :src="$url+'/obtener_portada_producto/'+item.producto.portada"  alt="..."></router-link>
+                        <div class="d-flex align-items-center"><router-link :to="{name: 'detalles_producto',params:{slug: item.producto.slug}}"><img class="cart-item-img" :src="item.producto.portada"  alt="..."></router-link>
                           <div class="cart-title text-start"><router-link class="text-uppercase text-dark" :to="{name: 'detalles_producto',params:{slug: item.producto.slug}}"><strong>{{ item.producto.nombre.substr(0,20) }}</strong></router-link><br><span class="text-muted text-sm">Talla: {{ item.variedad.talla }}</span><br><span class="text-muted text-sm">Color: {{ item.variedad.color }}</span>
                           </div>
                         </div>

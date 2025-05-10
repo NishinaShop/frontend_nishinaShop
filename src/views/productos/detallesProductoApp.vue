@@ -28,11 +28,11 @@
         <!-- Mostrar solo la imagen actual según índice -->
         <div v-if="galeria[0]">
             <a class="glightbox" 
-               :href="$url+'/obtener_galeria_producto/'+galeria[0].imagen" 
+               :href="galeria[0].imagen" 
                data-title="Modern Jacket 1 - Caption text" 
                data-gallery="product-gallery">
                 <img class="img-fluid" 
-                     :src="$url+'/obtener_galeria_producto/'+galeria[0].imagen" 
+                     :src="+galeria[0].imagen" 
                      alt="Modern Jacket 1">
             </a>
         </div>
@@ -230,7 +230,7 @@
           <div class="col-lg-2 col-md-4 col-6" v-for="item in nuevos_producto">
             <div class="product" >
               <div class="product-image">
-                <div class="ribbon ribbon-info">Nuevo</div><img class="img-fluid" :src="$url+'/obtener_portada_producto/'+item.portada" alt="product"/>
+                <div class="ribbon ribbon-info">Nuevo</div><img class="img-fluid" :src="item.portada" alt="product"/>
                 <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="detail.html"></a>
                   <div class="product-hover-overlay-buttons"><router-link class="btn btn-dark btn-buy" :to="{name: 'detalles_producto',params:{slug: item.slug}}"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">ver</span></router-link>
                   </div>

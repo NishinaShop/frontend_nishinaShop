@@ -48,7 +48,7 @@
                   <div v-if="!item.estado"></div>
                   <img
                     class="img-fluid"
-                    :src="$url+'/obtener_portada_producto/'+item.portada"
+                    :src="sitem.portada"
                     alt="product"
                   />
                   <div class="product-hover-overlay">

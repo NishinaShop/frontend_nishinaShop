@@ -134,6 +134,7 @@ export default {
         }else{
           this.msn_error = ''
           console.log(result)
+          this.cliente = {}
         }
       })
       

@@ -552,12 +552,12 @@
             <div class="images-sticky-effect" >
               <div class="image-wrapper-100" v-for="item in nuevos_producto" :key="item._id">
                 <img
-                  :src="$url+'/obtener_portada_producto/'+item.portada"
+                  :src="item.portada"
                   loading="lazy"
                   sizes="(max-width: 479px) 79vw, (max-width: 767px) 80vw, (max-width: 991px) 38vw, 36vw"
-                  :srcset="`
-                    ${$url}/obtener_portada_producto/${item.portada} 500w,
-                    ${$url}/obtener_portada_producto/${item.portada} 1290w
+                  srcset="`
+                    {{item.portada}} 500w,
+                    {{item.portada}} 1290w
                   `"
                   :alt="item.nombre || 'Producto'"
                   class="_645px-image"
@@ -612,18 +612,18 @@
                           <img
                             loading="lazy"
                             data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            :src="$url+'/obtener_portada_producto/'+item.portada"
+                            :src="item.portada"
                             alt=""
                             class="product-thumbnail portrait"
                           />
                           <img
                             loading="lazy"
-                            :src="$url+'/obtener_portada_producto/'+item.portada"
+                            :src="item.portada"
                             alt=""
                             sizes="(max-width: 479px) 100vw, (max-width: 767px) 94vw, (max-width: 991px) 45vw, 40vw"
-                            :srcset="`
-                              ${$url}/obtener_portada_producto/${item.portada} 500w,
-                              ${$url}/obtener_portada_producto/${item.portada} 754w
+                            srcset="`
+                              {{item.portada}} 500w,
+                              {{item.portada}} 754w
                             `"
                             :alt="item.nombre || 'Producto'"
                             class="product-thumbnail-hover"
