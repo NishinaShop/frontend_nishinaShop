@@ -157,13 +157,14 @@ export default {
         if(result.data.message){
           this.acceso= false
         }else{
-          this.venta = result.data.venta
-        this.detalles = result.data.detalles
+          this.venta = result.venta
+        this.detalles = result.detalles
         this.acceso= true
-        this.n_orden = result.data.venta.serie
+        this.n_orden = result.venta.serie
         console.log(result.data)
-        }
         this.load_data = false;
+        }
+        
       })
     },
     cDate(item){
