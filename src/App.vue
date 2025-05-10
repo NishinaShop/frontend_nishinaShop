@@ -1,11 +1,12 @@
 <template>  
   <div id="app"> 
     <topHeader />
-  </div>
+  
   
       <router-view />
     
   <bottomFooter />
+  </div>
 </template>
 <script>
 import topHeader from '@/components/topHeader.vue'
