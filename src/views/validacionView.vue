@@ -65,9 +65,9 @@ export default{
   }, 2000);
   },
   beforeMount(){
-    init_data()
+    this.init_data()
    
-    this.init_payment(this.payment_id)
+    
     
   },
   methods:{
