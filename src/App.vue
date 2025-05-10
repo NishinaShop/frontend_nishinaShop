@@ -1,12 +1,10 @@
-<template>  
+<template>
+    
   <div id="app"> 
     <topHeader />
-  
-  
-      <router-view />
-    
-  <bottomFooter />
   </div>
+  <router-view/>
+  <bottomFooter />
 </template>
 <script>
 import topHeader from '@/components/topHeader.vue'
@@ -25,9 +23,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  display: flex;
-  
 }
+
 nav {
   padding: 30px;
 }
