@@ -71,12 +71,14 @@ export default{
     this.venta.cliente = user_data._id
     if(this.$route.params.direccion){
     this.direccion = this.$route.params.direccion
-    console.log('direccion', this.direccion)
     this.venta.direccion = this.direccion
     }else{
       this.msn_error = 'No se obtuvo el codigo de la direccion'
     }
+    console.log('direccion: ', this.$route.params.direccion)
     this.init_payment(this.payment_id)
+     console.log(this.venta);
+    console.log(this.detalles);
   },
   methods:{
     init_carrito() {
@@ -103,7 +105,7 @@ export default{
             })
           }
           this.venta.total = this.total
-          console.log('total', this.venta.total)
+          console.log('total:', this.venta.total)
           this.carrito = result.data.cart_general
           
         }); 
@@ -120,8 +122,7 @@ export default{
           }else if(result.data.length >= 1){
            this.msn_error = 'El Id de pago pertenece a otra cuenta'
           }else if(result.data.length == 0){
-            /* this.crear_compras()*/
-            console.log(resume)
+            this.crear_compras()
           }
         })
     },

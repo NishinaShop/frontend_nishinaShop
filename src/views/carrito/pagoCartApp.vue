@@ -116,8 +116,7 @@
               </div>
               <div class="block-footer">
                 <a  class="btn btn-dark" id="btnBuy" style="cursor:pointer;width: 100%;" v-on:click="mecadopago() ">PAGAR</a>
-               <!--  <button class="btn btn-dark btnBuy" style="cursor: pointer" disabled>Procesando...</button> -->
-               
+               <div class="text-danger text-center"><span>{{ msn_error }}</span></div>
               </div>
             </div>
           </div>
@@ -142,7 +141,8 @@ export default {
       envio: 1,
       load_data: true,
       venta:{},
-      items: []
+      items: [],
+      msn_error: ''
     }
   },
   methods:{
@@ -190,11 +190,15 @@ export default {
     },
     seleccionar_direccion(event){
       this.venta.direccion = event.target.value
+      console.log(this.venta.direccion)
     },
     mecadopago(){
-      let data = {
+      if(this.venta.direccion == null){
+        this.msn_error = 'Selecciona una direccion'
+      }else{
+        let data = {
         back_urls: {
-          success: 'https://nishinashop.onrender.com/validation/success',
+          success: 'https://nishinashop.onrender.com/validation/success/'+this.venta.direccion,
           pending: 'https://nishinashop.onrender.com/validation/pending',
           failure: 'https://nishinashop.onrender.com/validation/failure'
         },
@@ -216,6 +220,7 @@ export default {
   });
 });
     
+      }
     }
   },
   beforeMount(){
