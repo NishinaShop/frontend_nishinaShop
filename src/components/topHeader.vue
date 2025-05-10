@@ -275,7 +275,7 @@
                     <div class="navbar-cart-product-wrapper">
                       <!-- cart item-->
                       <div class="navbar-cart-product" v-for="item in carrito"> 
-                        <div class="d-flex align-items-center"><a><img class="img-fluid navbar-cart-product-image" :src="$url+'/obtener_portada_producto/'+item.producto.portada" alt="..."></a>
+                        <div class="d-flex align-items-center"><a><img class="img-fluid navbar-cart-product-image" :src="item.producto.portada" alt="..."></a>
                           <div class="w-100"><a class="navbar-cart-product-close" href="#"><i class="fa fa-times">                                                   </i></a>
                             <div class="ps-3"> <router-link class="navbar-cart-product-link" :to="{name: 'detalles_producto',params:{slug: item.producto.slug}}">{{item.producto.nombre}}</router-link>
                               <small class="d-block text-muted">{{item.variedad.color+'-'+item.variedad.talla}}</small>

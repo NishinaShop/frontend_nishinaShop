@@ -106,17 +106,19 @@ export default{
           
         }); 
     },
-    validad_venta(payment_id){
+    init_payment(payment_id){
         axios.get(this.$url+'/validar_payment_id_venta/'+this.payment_id,{
           headers:{
           'Content-Type': 'application/json',
           'Authorization': this.$store.state.token
         }
         }).then((result)=>{
-          if(result.data.length >= 1){
-            this.msn_error = 'El pago ya fue asignado a otra venta'
+          if(result.data.message){
+            this.msn_error = result.data.message
+          }else if(result.data.length >= 1){
+           this.msn_error = 'El Id de pago pertenece a otra cuenta'
           }else if(result.data.length == 0){
-            this.crear_compras()
+             this.crear_compras()
           }
         })
     },
@@ -132,22 +134,8 @@ export default{
           this.$router.push({name: 'venta_detalle',params:{id:result.data.id}})
         })
     },
-    init_payment(payment_id){
-        axios.get('https://api.mercadopago.com/v1/payment/'+payment_id,{
-          headers:{
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer TEST-7802715175959909-050803-6580fa6051eed313c72af5b01407940f-2426338693'
-        }
-        }).then((result)=>{
-          console.log(result.data)
-          this.pago = result.data
-          if(this.pago.status == 'approved'){
-            this.validar_venta(this.payment_id)
-          }else{
-            this.msn_error = 'El pago no fue aprovado'
-          }
-        })
-    }
+    
+    
   }
 }
 </script>
