@@ -26,38 +26,10 @@
                 10% de descuento en tu primera compra
               </p>
             </div>
+            
           </div>
-        </div>
-      </div>
-    </section>
-    <div
-      data-animation="default"
-      class="navbar w-nav"
-      data-easing2="ease"
-      data-easing="ease"
-      data-collapse="medium"
-      data-w-id="6999f335-005a-f68f-bf29-0723f291d072"
-      role="banner"
-      data-duration="400"
-      id="navbar"
-    >
-      <nav class="container">
-        <div class="navbar-wrapper">
-          <a
-            href="/index.html"
-            aria-current="page"
-            class="site-logo-wrapper-in-tablet w-nav-brand w--current"
-            aria-label="Inicio"
-          >
-            <img
-              src="../assets/img/nishina-logo.png"
-              loading="lazy"
-              width="70"
-              alt=""
-              class="site-logo"
-            />
-          </a>
-          <div class="horizontal-left-center-10px-gap hide-in-tablet">
+          <div class="social-container" >
+            <div class="horizontal-left-center-10px-gap hide-in-tablet ">
             <a
               href="http://facebook.com/"
               target="_blank"
@@ -107,6 +79,37 @@
               />
             </a>
           </div>
+            </div>
+        </div>
+      </div>
+    </section>
+    <div
+      data-animation="default"
+      class="navbar w-nav"
+      data-easing2="ease"
+      data-easing="ease"
+      data-collapse="medium"
+      data-w-id="6999f335-005a-f68f-bf29-0723f291d072"
+      role="banner"
+      data-duration="400"
+      id="navbar"
+    >
+      <nav class="container">
+        <div class="navbar-wrapper ">
+          <a
+            href="/index.html"
+            aria-current="page"
+            class="site-logo-wrapper-in-tablet w-nav-brand w--current"
+            aria-label="Inicio"
+          >
+            <img
+              src="../assets/img/nishina-logo.png"
+              loading="lazy"
+              width="70"
+              alt=""
+              class="site-logo"
+            />
+          </a>
           <nav role="navigation" class="nav-menu-wrapper w-nav-menu">
             <div class="nav-middle-wrapper">
               <ul role="list" class="nav-menu w-list-unstyled">
@@ -387,6 +390,14 @@ max-width: 150px;
 .img-icon-head{
   max-width: 25px;
     height: auto;
+}
+.social-container {
+  display: flex;
+  justify-content: flex-end; /* Empuja el contenido al lado derecho */
+}
+.head-menu{
+  display: flex;
+  justify-content: center;
 }
 </style>
 <script>
