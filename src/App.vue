@@ -27,9 +27,6 @@ export default {
   display: flex;
   
 }
-router-view {
-  flex: 1;
-}
 nav {
   padding: 30px;
 }
