@@ -2,7 +2,9 @@
   <div id="app"> 
     <topHeader />
   </div>
-  <router-view/>
+  <main class="main-content">
+      <router-view />
+    </main>
   <bottomFooter />
 </template>
 <script>
@@ -16,6 +18,10 @@ export default {
 }
 </script>
 <style>
+.main-content {
+  flex: 1 !important; /* El router-view ocupa el espacio disponible */
+  padding-bottom : 1rem !important;
+   }   /* Espacio para el contenido */
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
