@@ -145,7 +145,7 @@ export default{
         }).then((result)=>{
           console.log(result)
           this.$socket.emit('send_cart',true)
-          this.$router.push({name: 'venta_detalle',params:{id:result.data.id}})
+          this.$router.push({name: 'venta_detalle',params:{id:result.data._id}})
         })
     },
     
