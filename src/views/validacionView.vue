@@ -59,13 +59,24 @@ export default{
       envio: 1
     }
   },
+  mounted(){
+    setTimeout(() => {
+    this.init_payment(this.payment_id)
+  }, 2000);
+  },
   beforeMount(){
+    init_data()
+   
+    this.init_payment(this.payment_id)
+    
+  },
+  methods:{
+    init_data(){
     this.estado = this.$route.params.estado 
+    console.log(this.estado)
     this.payment_id = this.$route.query.payment_id
-
     let user_data = JSON.parse(this.$store.state.user)
     this.init_carrito()
-
     this.venta.transaccion = this.payment_id
     this.venta.envio = this.envio
     this.venta.cliente = user_data._id
@@ -76,10 +87,7 @@ export default{
       this.msn_error = 'No se obtuvo el codigo de la direccion'
     }
     console.log('direccion: ', this.$route.params.direccion)
-    this.init_payment(this.payment_id)
-    
-  },
-  methods:{
+    },
     init_carrito() {
       this.total = 0
         axios.get(this.$url + "/obtener_carrito", {
