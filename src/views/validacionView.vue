@@ -143,9 +143,9 @@ export default{
           'Authorization': this.$store.state.token
         }
         }).then((result)=>{
-          console.log(result)
+          console.log(result.data.venta.id)
           this.$socket.emit('send_cart',true)
-          this.$router.push({name: 'venta_detalle',params:{id:result.data._id}})
+          this.$router.push({name: 'venta_detalle',params:{id:result.data.venta._id}})
         })
     },
     
