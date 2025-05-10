@@ -71,6 +71,7 @@ export default{
     this.venta.cliente = user_data._id
     if(this.$route.params.direccion){
     this.direccion = this.$route.params.direccion
+    console.log(this.dieccion)
     this.venta.direccion = this.direccion
     }else{
       this.msn_error = 'No se obtuvo el codigo de la direccion'

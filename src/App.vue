@@ -18,10 +18,6 @@ export default {
 }
 </script>
 <style>
-.main-content {
-  flex: 1 !important; /* El router-view ocupa el espacio disponible */
-  padding-bottom : 1rem !important;
-   }   /* Espacio para el contenido */
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -29,8 +25,7 @@ export default {
   text-align: center;
   color: #2c3e50;
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  
 }
 router-view {
   flex: 1;
