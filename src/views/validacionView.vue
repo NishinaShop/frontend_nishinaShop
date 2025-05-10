@@ -6,10 +6,7 @@
         <div class="hero-content pb-5 text-center">
           <h3 class="mb-5">Pago incorrecto</h3>
           <div class="row">  
-            <p class="lead mb-0">As am hastily invited settled at limited civilly fortune me. 
-                Really spring in extent an by. Judge but built party world. Of so am he remember
-                 although required. Bachelor unpacked be advanced at. Confined in declared 
-                 marianne is vicinity. </p>
+            <p class="lead mb-0">Redirigiendo...</p>
                 </div> 
           </div>
         </div>
@@ -71,6 +68,12 @@ export default{
     
   },
   methods:{
+    redireccion(){
+      setTimeout(() => {
+        this.$router.push({name: 'pago_carrito'})
+      }, 4000);
+      
+    },
     init_data(){
     this.estado = this.$route.params.estado 
     console.log(this.estado)
@@ -126,8 +129,10 @@ export default{
         }).then((result)=>{
           if(result.data.message){
             this.msn_error = result.data.message
+            this.redireccion()
           }else if(result.data.length >= 1){
            this.msn_error = 'El Id de pago pertenece a otra cuenta'
+           this.redireccion()
           }else if(result.data.length == 0){
             this.crear_compras()
           }
@@ -144,7 +149,7 @@ export default{
         }
         }).then((result)=>{
           console.log(result.data.venta.id)
-          this.$socket.emit('send_cart',true)
+            this.$socket.emit('send_cart',true)
           this.$router.push({name: 'venta_detalle',params:{id:result.data.venta._id}})
         })
     },
