@@ -143,7 +143,7 @@ export default {
     }
   },
   beforeMount(){
-    
+    this.init_venta()
   },
   methods:{
     init_venta(){
