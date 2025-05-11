@@ -270,9 +270,9 @@
             <div class="nav-item dropdown"><router-link class="navbar-icon-link d-lg-none" to="/detalles_carrito"> 
               <img src="https://res.cloudinary.com/dqitdaxd8/image/upload/3042571_shkf71.png" alt="Carrito de compras" class="img-icon-head">
               <span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none">Ver carrito</span></router-link>
-                <div class="d-none d-lg-block"><a class="navbar-icon-link" id="cartdetails" href="cart.html" data-bs-target="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="d-none d-lg-block"><router-link class="navbar-icon-link" id="cartdetails"  to="/detalles_carrito" data-bs-target="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <img src="https://res.cloudinary.com/dqitdaxd8/image/upload/3042571_shkf71.png" alt="Carrito de compras" class="img-icon-head">
-                    <div class="navbar-icon-link-badge">{{ count_cart }}                       </div></a>
+                    <div class="navbar-icon-link-badge">{{ count_cart }}                       </div></router-link>
                   <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end p-4" aria-labelledby="cartdetails">
                     <div class="navbar-cart-product-wrapper">
                       <!-- cart item-->
@@ -325,27 +325,19 @@
                 <a class="dropdown-item" v-on:click="logout()">Cerrar sesión</a>
               </div>
               </a>
-            <div
-              class="hambruger-button w-nav-button"
-              style="-webkit-user-select: text"
-              aria-label="menu"
-              role="button"
-              tabindex="0"
-              aria-controls="w-nav-overlay-0"
-              aria-haspopup="menu"
-              aria-expanded="false"
-            >
-              <div
-                data-w-id="4727fd08-6278-10ad-6fb9-1649612f1ccf"
-                class="hamburger-bars"
-              >
-                <div class="menu-icon_line-top"></div>
-                <div class="menu-icon_line-middle">
-                  <div class="menu-icon_line-middle-inner"></div>
-                </div>
-                <div class="menu-icon_line-bottom"></div>
+              <div class="dropdown">
+                <button><img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/640px-Hamburger_icon.svg.png"
+                loading="lazy"
+                alt=""
+                class="image-24px"
+              /></button>
+              <div class="dropdown-content">
+                <router-link class="dropdown-item" to="/detalles_carrito" >carrito</router-link>
+                <router-link class="dropdown-item" to="/direcciones_cliente" >Direcciones</router-link>
+                <a class="dropdown-item" v-on:click="logout()">Cerrar sesión</a>
               </div>
-            </div>
+              </div>
           </div>
         </div>
       </nav>
@@ -383,6 +375,43 @@
   </div>
 </template>
 <style>
+
+    .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    min-width: 150px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #f0f0f0;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
 .img-fluid-logo {
 max-width: 150px;
     height: auto;
