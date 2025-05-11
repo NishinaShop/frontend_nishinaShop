@@ -68,15 +68,21 @@
                 </div>
                 <div class="col-12 col-lg-6 detail-option mb-5">
                   <label class="detail-option-heading fw-bold">Cantidad <span>(requerido)</span></label>
-                  <input class="form-control detail-quantity" name="items" type="number"  v-model="obj_carrito.cantidad">
+                  <div class="d-flex align-items-center">
+                    <button class="btn btn-lg" @click="obj_carrito.cantidad--">-</button>
+                    <input class="form-control detail-quantity" readonly name="items" type="number"  v-model="obj_carrito.cantidad">
+                    <button class="btn btn-lg" @click="obj_carrito.cantidad++">+</button>
+                  </div>
                 </div>
               </div>
               <ul class="list-inline">
                 <li class="list-inline-item">
                   <button class="btn btn-dark btn-lg mb-1" type="button" v-on:click="add_cart()"> <i class="fa fa-shopping-cart me-2" ></i>Agregar al carrito</button>
+                <div class="text-center">
+                <span class="text-danger" v-if="msn_error">{{ msn_error }}</span>
+              </div>
                 </li>                
               </ul>
-              <span class="text-danger ms-5" v-if="msn_error">{{ msn_error }}</span>
           </div>
         </div>
       </div>
@@ -269,6 +275,7 @@ export default {
       producto: [],
       nuevos_producto: [],
       variedad: [],
+      msn_stock: '',
       obj_carrito: {
         cantidad: 1,
       },
@@ -322,8 +329,12 @@ export default {
           'Authorization': this.$store.state.token
         }
       }).then((result)=>{
-        console.log(result)
+        if(result.data.message){
+        this.msn_stock = result.data.message
+        this.msn_error = this.msn_stock
+        }else{
         this.$socket.emit('send_cart', true)
+          }
       })
     },
     add_cart(){
@@ -333,8 +344,7 @@ export default {
         this.msn_error = 'ingrese una cantidad'
       }else if(this.obj_carrito.cantidad <= 0){
         this.msn_error = 'ingrese una cantidad valida'
-      }else{
-        this.msn_error = ''
+      }else {
         console.log(this.obj_carrito)
         this.upload_cart()
       }

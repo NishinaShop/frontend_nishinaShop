@@ -23,7 +23,7 @@
                 class="image-24px"
               />
               <p class="_14px-text-white">
-                10% de descuento en tu primera compra
+                
               </p>
             </div>
             
@@ -31,7 +31,7 @@
           <div class="social-container" >
             <div class="horizontal-left-center-10px-gap hide-in-tablet ">
             <a
-              href="http://facebook.com/"
+              href="https://www.facebook.com/Nishina.mx/"
               target="_blank"
               class="social-icon-navbar w-inline-block"
             >
@@ -55,7 +55,7 @@
               />
             </a>
             <a
-              href="https://pinterest.com/"
+              href="https://www.instagram.com/nishina_mx/"
               target="_blank"
               class="social-icon-navbar w-inline-block"
             >
@@ -67,7 +67,7 @@
               />
             </a>
             <a
-              href="https://www.linkedin.com/"
+              href="https://www.tiktok.com/@nishina_mx"
               target="_blank"
               class="social-icon-navbar w-inline-block"
             >

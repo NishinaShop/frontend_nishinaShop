@@ -74,8 +74,9 @@
                     <label class="form-label" for="password">Contraseña:</label>
                     <input class="form-control" id="password" type="password" placeholder="Ingresa una contraseña" v-model="cliente.password"/>
                   </div>
-                  <div class="mb-4 text-center" v-if="msn_error">
+                  <div class="mb-4 text-center" v-if="msn_error || msn_success">
                     <small class="text-danger">{{ msn_error }}</small>
+                    <small class="text-success">{{ msn_success }}</small>
                   </div>
                   <div class="mb-4 text-center">
                     <button class="btn btn-outline-dark" type="button" v-on:click="validar_registro()">
@@ -109,12 +110,13 @@ export default {
     email: '',
     password:'',
     msn_error_login: '',
+    msn_success : ''
     }
   },
   methods:{
     validar_registro(){
     if(!this.cliente.nombre){
-      this.msn_error = 'Ingrese su nombre'
+      this.msn_error = 'Ingrese su nombre '
     }else if(!this.cliente.email){
       this.msn_error = 'Ingrese un correo electronico'
     }else if(!this.cliente.password){
@@ -133,6 +135,7 @@ export default {
           this.msn_error = result.data.message
         }else{
           this.msn_error = ''
+          this.msn_success = 'Tu cuenta fue creada'
           console.log(result)
           this.cliente = {}
         }

@@ -46,12 +46,19 @@
                     </div>
                   </div>
                 </div>
-                <div class="cart-body" v-if="load_data">
+                <div class="cart-body" v-if="n_productos === 0 && !load_data">
+                  <div class="row">
+                    <div class="col-12">
+                      <p><b>El carrito esta vacio</b></p>
+                    </div>
+                  </div>
+                  <div class="cart-body" v-if="load_data">
                   <div class="row">
                     <div class="col-12">
                       <img src="../../../public/assets/img/loading.gif" style="width: 60px !important;">
                     </div>
                   </div>
+                </div>
                 </div>
               </div>
             </div>
@@ -70,7 +77,9 @@
                   <li class="order-summary-item border-0 "><span class="text-center">Total: </span><strong class="order-summary-total ">&nbsp;&nbsp; {{ convertCurrency(total+envio) }}</strong></li>
                 </ul>
               </div>
-              <router-link class="btn btn-dark" :to="{name: 'pago_carrito'}">Proceder al pago <i class="fa fa-chevron-right"></i></router-link>
+              <button class="btn btn-dark" v-on:click="validar_carrito()">Proceder al pago <i class="fa fa-chevron-right"></i></button>
+              <div class="mt-2 text-center ">
+              <span class="text-danger">{{ msn_vacio }}</span></div>
             </div>
           </div>
         </div>
@@ -92,7 +101,9 @@ export default {
       total: 0,
       carrito:[],
       load_data: true,
-      envio:1
+      envio:1,
+      msn_cart : '',
+      msn_vacio: ''
     }
   },
   methods:{
@@ -108,15 +119,27 @@ export default {
           },
         })
         .then((result) => {
-          console.log(result.data.cart_general)
           this.n_productos = result.data.cart_general.length
+          if(this.n_productos == 0 ){
+            this.load_data = false
+            this.msn_cart = 'Sin articulos en el carrito'
+          }else{
+            console.log(result.data.cart_general)
           for(var item of result.data.cart_general){
             let subtotal = item.producto.precio * item.cantidad
             this.total = this.total + subtotal 
           }
           this.carrito = result.data.cart_general
           this.load_data = false
+          }
         }); 
+      }
+    },
+    validar_carrito(){
+      if(this.n_productos === 0){
+        this.msn_vacio = 'El carrito esta vacio'
+      }else{
+        this.$router.push({name: 'pago_carrito'}) 
       }
     },
     convertCurrency(number){
