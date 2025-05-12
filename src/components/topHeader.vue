@@ -6,7 +6,8 @@
           <div class="w-layout-hflex horizontal-left-center-35px-gap">
             <div class="w-layout-hflex icon-list-10px-gap">
               <img
-                src="../assets/img/66bf2986a87268259b6529db_Frame (1).svg"
+                src="https://res.cloudinary.com/dqitdaxd8/image/upload/b_rgb:08080800/v1747041299/images_sqt2il.png"
+                
                 loading="lazy"
                 alt=""
                 class="image-24px"
@@ -17,14 +18,14 @@
             </div>
             <div class="w-layout-hflex icon-list-10px-gap">
               <img
-                src="../assets/img/66bf2986cdd4f45da9d903db_Frame (2).svg"
+                src="https://res.cloudinary.com/dqitdaxd8/image/upload/v1747041463/images_pdh4io.png"
                 loading="lazy"
                 alt=""
                 class="image-24px"
               />
-              <p class="_14px-text-white">
-                
-              </p>
+              <a class="_14px-text-white" href="https://wa.me/524422325235">
+                Hacer pedido via whats'app
+              </a>
             </div>
             
           </div>
@@ -269,28 +270,31 @@
             </div> -->
             <div class="nav-item dropdown"><router-link class="navbar-icon-link d-lg-none" to="/detalles_carrito"> 
               <img src="https://res.cloudinary.com/dqitdaxd8/image/upload/3042571_shkf71.png" alt="Carrito de compras" class="img-icon-head">
-              <span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none">Ver carrito</span></router-link>
+              <span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none"></span></router-link>
                 <div class="d-none d-lg-block"><router-link class="navbar-icon-link" id="cartdetails"  to="/detalles_carrito" data-bs-target="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <img src="https://res.cloudinary.com/dqitdaxd8/image/upload/3042571_shkf71.png" alt="Carrito de compras" class="img-icon-head">
                     <div class="navbar-icon-link-badge">{{ count_cart }}                       </div></router-link>
                   <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end p-4" aria-labelledby="cartdetails">
                     <div class="navbar-cart-product-wrapper">
                       <!-- cart item-->
-                      <div class="navbar-cart-product" v-for="item in carrito"> 
+                       <div class="navbar-cart-product" v-for="item in carrito" v-if="count_cart >= 1"> 
                         <div class="d-flex align-items-center"><a><img class="img-fluid navbar-cart-product-image" :src="item.producto.portada" alt="..."></a>
-                          <div class="w-100"><a class="navbar-cart-product-close" href="#"><i class="fa fa-times">                                                   </i></a>
-                            <div class="ps-3"> <router-link class="navbar-cart-product-link" :to="{name: 'detalles_producto',params:{slug: item.producto.slug}}">{{item.producto.nombre}}</router-link>
+                          <div class="w-100"><a class="navbar-cart-product-close"><i class="fa fa-times"></i></a>
+                            <div class="ps-3"> <router-link class="navbar-cart-product-link" :to="{name: 'detalles_producto',params:{slug: item.producto.slug}}">{{item.producto.nombre}}</router-link> 
                               <small class="d-block text-muted">{{item.variedad.color+'-'+item.variedad.talla}}</small>
                               <small class="d-block text-muted">Cantidad: {{item.cantidad}} </small>
                               <strong class="d-block text-sm text-end">{{convertCurrency(item.producto.precio * item.cantidad)}} </strong></div>
                           </div>
                         </div>
                       </div>
+                       <div class="align-items-center"  v-if="count_cart == 0"> 
+                        <div class="text-center">Carrito vacio</div>
+                      </div>
                     </div>
                     <!-- total price-->
                     <div class="navbar-cart-total"><span class="text-uppercase text-muted">Tota:</span><strong class="text-uppercase">{{ convertCurrency(total) }}</strong></div>
                     <!-- buttons-->
-                    <div class="d-flex justify-content-between"><router-link class="btn btn-link text-dark me-3" to="/detalles_carrito">Ver carrito<i class="fa-arrow-right fa"></i></router-link><router-link class="btn btn-outline-dark" :to="{name: 'pago_carrito'}">Checkout</router-link></div>
+                    <div class="d-flex justify-content-between"><router-link class="btn btn-link text-dark me-3" to="/detalles_carrito">Ver carritos<i class="fa-arrow-right fa"></i></router-link><router-link class="btn btn-outline-dark" :to="{name: 'pago_carrito'}">Checkout</router-link></div>
                   </div>
                 </div>
               </div>
@@ -305,27 +309,104 @@
                 alt=""
                 class="image-24px"
               />
-              <span class="w-inline-block">Ingresar</span>
+              <small class="w-inline-block d-none d-sm-inline">Ingresar</small>
             </router-link>
-            <a
-              class="w-inline-block dropdown"
-              to="/login"
-              v-if="$store.state.token"
-            >
-              <img
-                src="../assets/img/66bf2b432404d408024dcb53_Frame.svg"
-                loading="lazy"
-                alt=""
-                class="image-24px"
-              />
-              <span class="w-inline-block dropdown-toggle" data-bs-target="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> &nbsp; {{ user.nombre.split(" ")[0] }}</span>
-              <div class="dropdown-menu dropdown-menu-animated" aria-labelledby="categoryDropdownMenuLink"style="left: -50px !important;">
-                <router-link class="dropdown-item" to="/direcciones_cliente" >Direcciones</router-link>
-                <!-- <a class="dropdown-item" href="category-right.html">Category - right sidebar   </a>-->
-                <a class="dropdown-item" v-on:click="logout()">Cerrar sesión</a>
-              </div>
+            <div class="dropdown d-none d-sm-inline" v-if="$store.state.token">
+              <!-- Trigger del dropdown -->
+              <a
+                class="w-inline-block dropdown-toggle"
+                href="#"
+                id="userDropdown"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                role="button"
+              >
+                <img
+                  src="../assets/img/66bf2b432404d408024dcb53_Frame.svg"
+                  loading="lazy"
+                  alt=""
+                  class="image-24px"
+                />
+                <small class="d-none d-sm-inline">&nbsp; {{ user.nombre.split(" ")[0] }}</small>
               </a>
-              <div class="dropdown">
+
+              <!-- Menú desplegable -->
+              <ul class="dropdown-menu dropdown-menu-animated" aria-labelledby="userDropdown">
+                <li>
+                  <router-link class="dropdown-item btn" to="/direcciones_cliente"><b>Direcciones</b></router-link>
+                </li>
+                <li>
+                  <a class="dropdown-item btn" @click="logout()"><b>Cerrar sesión</b></a>
+                </li>
+              </ul>
+            </div>
+            <div class="dropdown d-lg-none" v-if="$store.state.token">
+              <!-- Trigger del dropdown -->
+              <a
+                class="w-inline-block dropdown-toggle"
+                href="#"
+                id="userDropdown"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                role="button"
+              >
+                <img
+                  src="../assets/img/66bf2b432404d408024dcb53_Frame.svg"
+                  loading="lazy"
+                  alt=""
+                  class="image-24px"
+                />
+                <small class="d-none d-sm-inline">&nbsp; {{ user.nombre.split(" ")[0] }}</small>
+              </a>
+
+              <!-- Menú desplegable -->
+              <ul class="dropdown-menu dropdown-menu-animated" aria-labelledby="userDropdown">
+                <li>
+                  <router-link class="dropdown-item btn" to="/direcciones_cliente"><b>Direcciones</b></router-link>
+                </li>
+                <li>
+                  <a class="dropdown-item btn" @click="logout()"><b>Cerrar sesión</b></a>
+                </li>
+              </ul>
+            </div>
+              
+          <button class="navbar-toggler navbar-toggler-right d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+          <!-- Navbar Collapse -->
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            
+            <ul class="navbar-nav  dropdown-menu-movil ">
+              
+              <li class="nav-item-movil ms-2"><router-link class="nav-link" to="/">Inicio</router-link>
+              </li>
+              <li class="nav-item-movil ms-2"><router-link class="nav-link" to="/catalogo">Catalogo</router-link>
+              </li>
+              <!-- Megamenu-->
+              <li class="nav-item-movil ms-2"><router-link class="nav-link" to="/">Temporada</router-link>
+              </li>
+              <!-- /Megamenu end-->
+              <!-- Multi level dropdown    -->
+              <li class="nav-item-movil ms-2"><router-link class="nav-link" to="/">Nosotros</router-link>
+              </li>
+              <!-- Multi level dropdown end-->
+              
+              <li class="nav-item-movil ms-2"><router-link class="nav-link" to="/">Mayoristas</router-link>
+              </li>
+              <li class="nav-item-movil ms-2"><router-link class="nav-link" to="/">Contacto</router-link>
+              </li>
+              <div class="position-absolute top-0 end-0">
+              <div class=" d-flex align-items-center justify-content-between justify-content-lg-end mt-1 mb-2 my-lg-0">
+              <!-- Cart Dropdown-->
+              <div class="nav-item-movil dropdown"><router-link class="navbar-icon-link d-lg-none" to="/detalles_carrito"> 
+              <img src="https://res.cloudinary.com/dqitdaxd8/image/upload/3042571_shkf71.png" alt="Carrito de compras" class="img-icon-head">
+              <span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none"></span></router-link>
+              </div>
+            </div>
+            </div>
+            </ul>
+            
+          </div>
+              
+              <!--<div class="dropdown">
                 <button><img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/640px-Hamburger_icon.svg.png"
                 loading="lazy"
@@ -337,7 +418,7 @@
                 <router-link class="dropdown-item" to="/direcciones_cliente" >Direcciones</router-link>
                 <a class="dropdown-item" v-on:click="logout()">Cerrar sesión</a>
               </div>
-              </div>
+              </div>-->
           </div>
         </div>
       </nav>
@@ -375,42 +456,33 @@
   </div>
 </template>
 <style>
-
-    .dropdown {
-    position: relative;
-    display: inline-block;
+ .nav-item-movil {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding: .2rem 0;
   }
 
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    background-color: white;
-    min-width: 150px;
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-    z-index: 1;
-  }
+.dropdown-menu-movil {
+  float: left !important;
+  left: 0;
+  width: 90vw;
+  position: absolute !important;
+  background-color: white;
+  padding: 1rem 0;
+  border: none;
+    
+}
 
-  .dropdown-content a {
-    display: block;
-    padding: 10px;
-    text-decoration: none;
-    color: black;
-  }
+.dropdown-item {
+  color: #000;
+  padding: 0.75rem 1rem;
+}
 
-  .dropdown-content a:hover {
-    background-color: #f0f0f0;
-  }
-
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-
-  button {
-    border: none;
-    background: none;
-    cursor: pointer;
-  }
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #0d6efd;
+}
 
 .img-fluid-logo {
 max-width: 150px;

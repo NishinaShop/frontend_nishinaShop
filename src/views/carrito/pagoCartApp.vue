@@ -16,12 +16,12 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8">
-
+            <!--direccion box-->   
             <div class="block mb-5">
               <div class="block-header">
                 <h6 class="text-uppercase mb-0"><b>Dirección de entrega</b></h6>
             </div>
-              <div class="block-body">
+              <div class="block-body" v-if="direcciones.length >= 1">
                 <div class="row">
                   <div class="mb-4 col-md-6 d-flex align-items-center" v-for="item in direcciones">
                     <input type="radio" name="shippping" id="option0" :value="item._id" v-on:change="seleccionar_direccion($event)">
@@ -32,9 +32,20 @@
                   </div>
                 </div>
               </div>
-
-            </div>
-           
+              <div class="block-body" >
+                <div class="row ">
+                  <div class="mb-4  align-items-center">
+                    <label class="">
+                      <span class="mb-2 ">No tienes direcciones guardadas.</span>
+                      <div class="mt-2">
+                        <router-link class="btn btn-dark" type="button" to="/direcciones_cliente">Agregar direccion</router-link>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>  
+            <!--direccion box-->         
             <div class="mb-5">
               <div class="cart">
                 <div class="cart-wrapper">
@@ -69,6 +80,7 @@
                 </div>
               </div>
             </div>
+            
             <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row"><router-link class="btn  btn-dark" to="/detalles_carrito"> <i class="fa fa-angle-left me-2" ></i>Regresar al carrito</router-link><a class="btn btn-dark" href="checkout5.html">Pagar via SPEI<i class="fa fa-angle-right ms-2"></i></a></div>
           </div>
           <div class="col-lg-4">
