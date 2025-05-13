@@ -38,7 +38,7 @@
                     <label class="">
                       <span class="mb-2 ">No tienes direcciones guardadas.</span>
                       <div class="mt-2">
-                        <router-link class="btn btn-dark" type="button" to="/cliente/direcciones">Agregar direccion</router-link>
+                        <router-link class="btn btn-dark" type="button" to="/cuenta/direcciones">Agregar direccion</router-link>
                       </div>
                     </label>
                   </div>

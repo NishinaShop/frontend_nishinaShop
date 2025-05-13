@@ -294,7 +294,7 @@
                     <!-- total price-->
                     <div class="navbar-cart-total"><span class="text-uppercase text-muted">Tota:</span><strong class="text-uppercase">{{ convertCurrency(total) }}</strong></div>
                     <!-- buttons-->
-                    <div class="d-flex justify-content-between"><router-link class="btn btn-link text-dark me-3" to="/detalles_carrito">Ver carritos<i class="fa-arrow-right fa"></i></router-link><router-link class="btn btn-outline-dark" :to="{name: 'pago_carrito'}">Checkout</router-link></div>
+                    <div class="d-flex justify-content-between"><router-link class="btn btn-link text-dark me-3" to="/detalles_carrito">Ver carrito<i class="fa-arrow-right fa"></i></router-link><router-link class="btn btn-outline-dark" :to="{name: 'pago_carrito'}">Checkout</router-link></div>
                   </div>
                 </div>
               </div>
