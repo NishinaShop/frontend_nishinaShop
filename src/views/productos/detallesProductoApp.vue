@@ -78,9 +78,13 @@
               <ul class="list-inline">
                 <li class="list-inline-item">
                   <button class="btn btn-dark btn-lg mb-1" type="button" v-on:click="add_cart()"> <i class="fa fa-shopping-cart me-2" ></i>Agregar al carrito</button>
-                <div class="text-center">
-                <span class="text-danger" v-if="msn_error">{{ msn_error }}</span>
+                  <img v-if="gif"  class="ms-3"src="https://res.cloudinary.com/dqitdaxd8/image/upload/kOnzy_ikzcfe.gif" style="width: 30px; height: auto;">
+                <div class="text-center"v-if="msn_error">
+                <span class="text-danger" >{{ msn_error }}</span>
               </div>
+              <div class="d-flex justify-content-center" v-if="msn_cart">
+              <span class="text-success">{{ msn_cart }}</span>
+                </div>
                 </li>                
               </ul>
           </div>
@@ -276,11 +280,13 @@ export default {
       nuevos_producto: [],
       variedad: [],
       msn_stock: '',
+      msn_cart: '',
       obj_carrito: {
         cantidad: 1,
       },
       msn_error: '',
-      user_data : JSON.parse(this.$store.state.user)
+      user_data : JSON.parse(this.$store.state.user),
+      gif : false
     }
   },
     methods:{
@@ -323,6 +329,8 @@ export default {
       
     },
     upload_cart(){
+      this.msn_error = ''
+      this.gif = true
       axios.post(this.$url+'/agregar_al_carrito',this.obj_carrito,{
         headers:{
           'Content-Type': 'application/json',
@@ -333,7 +341,13 @@ export default {
         this.msn_stock = result.data.message
         this.msn_error = this.msn_stock
         }else{
+        this.gif = false
         this.$socket.emit('send_cart', true)
+        this.msn_cart = 'Se agrego al carrito'
+        setTimeout(() => {
+        this.msn_cart = ''
+        }, 3000);
+
           }
       })
     },

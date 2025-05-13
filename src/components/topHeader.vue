@@ -97,20 +97,20 @@
     >
       <nav class="container">
         <div class="navbar-wrapper ">
-          <a
-            href="/index.html"
+          <router-link            
             aria-current="page"
-            class="site-logo-wrapper-in-tablet w-nav-brand w--current"
+            class="site-logo-wrapper-in-tablet w-nav-brand w--current ms-0"
             aria-label="Inicio"
+            to="/"
           >
             <img
               src="../assets/img/nishina-logo.png"
               loading="lazy"
-              width="70"
+              style="width:100px !important;"
               alt=""
               class="site-logo"
             />
-          </a>
+          </router-link>
           <nav role="navigation" class="nav-menu-wrapper w-nav-menu">
             <div class="nav-middle-wrapper">
               <ul role="list" class="nav-menu w-list-unstyled">
@@ -269,7 +269,7 @@
               </div>
             </div> -->
             <div class="nav-item dropdown"><router-link class="navbar-icon-link d-lg-none" to="/detalles_carrito"> 
-              <img src="https://res.cloudinary.com/dqitdaxd8/image/upload/3042571_shkf71.png" alt="Carrito de compras" class="img-icon-head">
+              <img src="https://res.cloudinary.com/dqitdaxd8/image/upload/3042571_shkf71.png" alt="Carrito de compras"class="image-24px">
               <span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none"></span></router-link>
                 <div class="d-none d-lg-block"><router-link class="navbar-icon-link" id="cartdetails"  to="/detalles_carrito" data-bs-target="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <img src="https://res.cloudinary.com/dqitdaxd8/image/upload/3042571_shkf71.png" alt="Carrito de compras" class="img-icon-head">
@@ -311,7 +311,7 @@
               />
               <small class="w-inline-block d-none d-sm-inline">Ingresar</small>
             </router-link>
-            <div class="dropdown d-none d-sm-inline" v-if="$store.state.token">
+            <div class="dropdown w-inline-block d-none d-sm-inline" v-if="$store.state.token">
               <!-- Trigger del dropdown -->
               <a
                 class="w-inline-block dropdown-toggle"
@@ -327,20 +327,20 @@
                   alt=""
                   class="image-24px"
                 />
-                <small class="d-none d-sm-inline">&nbsp; {{ user.nombre.split(" ")[0] }}</small>
+                <small class="">&nbsp; {{ user.nombre.split(" ")[0] }}</small>
               </a>
 
               <!-- Menú desplegable -->
               <ul class="dropdown-menu dropdown-menu-animated" aria-labelledby="userDropdown">
                 <li>
-                  <router-link class="dropdown-item btn" to="/direcciones_cliente"><b>Direcciones</b></router-link>
+                  <router-link class="dropdown-item btn" to="/cuenta/direcciones"><b>Direcciones</b></router-link>
                 </li>
                 <li>
                   <a class="dropdown-item btn" @click="logout()"><b>Cerrar sesión</b></a>
                 </li>
               </ul>
             </div>
-            <div class="dropdown d-lg-none" v-if="$store.state.token">
+            <div class="dropdown d-lg-none " v-if="$store.state.token">
               <!-- Trigger del dropdown -->
               <a
                 class="w-inline-block dropdown-toggle"
@@ -356,13 +356,12 @@
                   alt=""
                   class="image-24px"
                 />
-                <small class="d-none d-sm-inline">&nbsp; {{ user.nombre.split(" ")[0] }}</small>
+                <small class="">&nbsp; {{ user.nombre.split(" ")[0] }}</small>
               </a>
-
               <!-- Menú desplegable -->
               <ul class="dropdown-menu dropdown-menu-animated" aria-labelledby="userDropdown">
                 <li>
-                  <router-link class="dropdown-item btn" to="/direcciones_cliente"><b>Direcciones</b></router-link>
+                  <router-link class="dropdown-item btn" to="/cuenta/direcciones"><b>Direcciones</b></router-link>
                 </li>
                 <li>
                   <a class="dropdown-item btn" @click="logout()"><b>Cerrar sesión</b></a>
@@ -370,33 +369,36 @@
               </ul>
             </div>
               
-          <button class="navbar-toggler navbar-toggler-right d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+          <button class="navbar-toggler  d-lg-none dropdown ms-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-bars">
+            </i>
+          </button>
           <!-- Navbar Collapse -->
           <div class="collapse navbar-collapse" id="navbarCollapse">
             
             <ul class="navbar-nav  dropdown-menu-movil ">
               
-              <li class="nav-item-movil ms-2"><router-link class="nav-link" to="/">Inicio</router-link>
+              <li class="nav-item-movil ms-2"><router-link class="nav-link" @click="cerrarMenu()" to="/">Inicio</router-link>
               </li>
-              <li class="nav-item-movil ms-2"><router-link class="nav-link" to="/catalogo">Catalogo</router-link>
+              <li class="nav-item-movil ms-2"><router-link class="nav-link"  @click="cerrarMenu()" to="/catalogo">Catalogo</router-link>
               </li>
               <!-- Megamenu-->
-              <li class="nav-item-movil ms-2"><router-link class="nav-link" to="/">Temporada</router-link>
+              <li class="nav-item-movil ms-2"><router-link class="nav-link" @click="cerrarMenu()" to="/">Temporada</router-link>
               </li>
               <!-- /Megamenu end-->
               <!-- Multi level dropdown    -->
-              <li class="nav-item-movil ms-2"><router-link class="nav-link" to="/">Nosotros</router-link>
+              <li class="nav-item-movil ms-2"><router-link class="nav-link"  @click="cerrarMenu()" to="/">Nosotros</router-link>
               </li>
               <!-- Multi level dropdown end-->
               
-              <li class="nav-item-movil ms-2"><router-link class="nav-link" to="/">Mayoristas</router-link>
+              <li class="nav-item-movil ms-2"><router-link class="nav-link"  @click="cerrarMenu()" to="/">Mayoristas</router-link>
               </li>
-              <li class="nav-item-movil ms-2"><router-link class="nav-link" to="/">Contacto</router-link>
+              <li class="nav-item-movil ms-2"><router-link class="nav-link"  @click="cerrarMenu()" to="/">Contacto</router-link>
               </li>
               <div class="position-absolute top-0 end-0">
               <div class=" d-flex align-items-center justify-content-between justify-content-lg-end mt-1 mb-2 my-lg-0">
               <!-- Cart Dropdown-->
-              <div class="nav-item-movil dropdown"><router-link class="navbar-icon-link d-lg-none" to="/detalles_carrito"> 
+              <div class="nav-item-movil dropdown"><router-link class="navbar-icon-link d-lg-none"  @click="cerrarMenu()" to="/detalles_carrito"> 
               <img src="https://res.cloudinary.com/dqitdaxd8/image/upload/3042571_shkf71.png" alt="Carrito de compras" class="img-icon-head">
               <span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none"></span></router-link>
               </div>
@@ -405,20 +407,6 @@
             </ul>
             
           </div>
-              
-              <!--<div class="dropdown">
-                <button><img
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/640px-Hamburger_icon.svg.png"
-                loading="lazy"
-                alt=""
-                class="image-24px"
-              /></button>
-              <div class="dropdown-content">
-                <router-link class="dropdown-item" to="/detalles_carrito" >carrito</router-link>
-                <router-link class="dropdown-item" to="/direcciones_cliente" >Direcciones</router-link>
-                <a class="dropdown-item" v-on:click="logout()">Cerrar sesión</a>
-              </div>
-              </div>-->
           </div>
         </div>
       </nav>
@@ -516,6 +504,13 @@ export default {
     };
   },
   methods: {
+    cerrarMenu() {
+    const menu = document.getElementById('navbarCollapse');
+    if (menu && menu.classList.contains('show')) {
+      const collapse = bootstrap.Collapse.getInstance(menu) || new bootstrap.Collapse(menu);
+      collapse.hide();
+    }
+  },
     logout() {
       this.$store.dispatch("logout");
       if(this.$router.path !== '/') this.$router.push({ name: "home" });

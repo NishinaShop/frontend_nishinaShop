@@ -66,55 +66,42 @@
               </div>
             </form>
             <table class="table table-striped mt-6">
-  <thead class="table-dark">
-    <tr>
-      <th scope="col">Nombre/Tel.</th>
-      <th scope="col">Direccion</th>
-      <th scope="col">Ciudad/Estado</th>
-      <th scope="col">Email</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr v-for="item in list_direcciones">
-      <th scope="row"><small>{{ item.nombre }}</small> <br>
-      <small>{{ item.n_contacto }}</small>
-      </th>
-      <td><small>{{ item.calle }}</small> <br>
-        <small>{{ item.colonia+', CP:'+item.codigo_postal  }}</small></td>
-      <td><small>{{ item.ciudad }},</small> <br>
-        <small>{{ item.estado }}</small></td>
-      <td><small>{{ item.email }}</small> <br>
-      </td>
-      <td> <button class="btn btn-danger btn-sm" v-on:click="eliminar_direccion(item._id)">Eliminar</button></td>
-    </tr>
-  </tbody>
-</table>
+              <thead class="table-dark">
+                <tr>
+                  <th scope="col">Nombre/Tel.</th>
+                  <th scope="col">Direccion</th>
+                  <th scope="col">Ciudad/Estado</th>
+                  <th scope="col">Email</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody v-if="list_direcciones.length >= 1">
+                <tr v-for="item in list_direcciones">
+                  <th scope="row"><small>{{ item.nombre }}</small> <br>
+                  <small>{{ item.n_contacto }}</small>
+                  </th>
+                  <td><small>{{ item.calle }}</small> <br>
+                    <small>{{ item.colonia+', CP:'+item.codigo_postal  }}</small></td>
+                  <td><small>{{ item.ciudad }},</small> <br>
+                    <small>{{ item.estado }}</small></td>
+                  <td><small>{{ item.email }}</small> <br>
+                  </td>
+                  <td> <button class="btn btn-danger btn-sm" v-on:click="eliminar_direccion(item._id)">Eliminar</button></td>
+                </tr>
+              </tbody>
+              
+                <tr v-if="list_direcciones.length == 0">
+  <td colspan="5" class="text-center ">
+    <label class="bg-white py-4">No tienes direcciones guardadas</label>
+  </td>
+</tr>
+
+              
+            </table>
           </div>
           <!-- Customer Sidebar-->
-          <div class="col-xl-3 col-lg-4 mb-5 ">
-            <div class="customer-sidebar card border-0"> 
-              <div class="customer-profile"><a class="d-inline-block" href="#"><img class="img-fluid rounded-circle customer-image shadow" src="../../../public/img/avatar-1.png" alt=""></a>
-                <h5>Usuario</h5>
-                <p class="text-muted text-sm mb-0"></p>
-              </div>
-              <nav class=" customer-nav"><a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none"><span>
-                    <svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#paper-bag-1"> </use>
-                    </svg>Ordenes</span>
-                  <div class="badge rounded-pill bg-dark fw-normal px-3">0</div></a><a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" ><span>
-                    <svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#male-user-1"> </use>
-                    </svg>Perfil</span></a><a class="active list-group-item d-flex justify-content-between align-items-center text-decoration-none" href="customer-addresses.html"><span>
-                    <svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#navigation-map-1"> </use>
-                    </svg>Direcciones</span></a><a class="list-group-item d-flex justify-content-between align-items-center text-decoration-none" v-on:click=""><span>
-                    <svg class="svg-icon svg-icon-heavy me-2">
-                      <use xlink:href="#exit-1"> </use>
-                    </svg>Cerrar sesión</span></a>
-              </nav>
-            </div>
-          </div> 
+          
+          <sideBarCliente />
           <!-- /Customer Sidebar-->
         </div>
       </div>
@@ -123,6 +110,7 @@
 </template>
 <script>
 import axios from 'axios';
+import sideBarCliente from '@/components/sideBarCliente.vue';
 
 export default {
   name: 'direccionesApp',
@@ -132,6 +120,9 @@ export default {
       msn_error : '',
       list_direcciones:[],
     }
+  },
+  components:{
+    sideBarCliente,
   },
   methods:{
     crear_direccion(){
