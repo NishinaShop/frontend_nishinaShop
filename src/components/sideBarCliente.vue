@@ -5,7 +5,7 @@
         <a class="d-inline-block" href="#"
           ><img
             class="img-fluid rounded-circle customer-image shadow"
-            src="/public/img/avatar-1.png"
+            src="https://res.cloudinary.com/dqitdaxd8/image/upload/profile-default-icon-2048x2045-u3j7s5nj_dwojf2.png"
             alt=""
         /></a>
         <h5>Usuario</h5>
@@ -53,6 +53,8 @@
   </div>
 </template>
 <script>
+import axios from 'axios';
+
 export default {
   name: "sideBarClienteApp",
   data(){
@@ -60,12 +62,25 @@ export default {
       n_ordenes : 0,
     }
   },
+  beforeMount(){
+  this.count_ordenes()
+  },
     methods:{
       logout(){
       this.$store.dispatch("logout");
       if(this.$router.path !== '/') this.$router.push({ name: "home" });
      this.$socket.emit('send_cart',true)
-    }
+    },
+    count_ordenes(){
+      axios.get(this.$url+'/listar_ordenes_admin',{
+        headers:{
+          'Content-Type': 'application/json',
+          'Authorization': this.$store.state.token
+        }
+      }).then((result)=>{
+        this.n_ordenes = result.data.ordenes.length 
+      })
+    }  
     }
 };
 </script>
