@@ -64,9 +64,7 @@ export default {
       logout(){
       this.$store.dispatch("logout");
       if(this.$router.path !== '/') this.$router.push({ name: "home" });
-      this.carrito = []
-      this.count_cart = 0
-      /*window.location.reload()*/ 
+     this.$socket.emit('send_cart',true)
     }
     }
 };
