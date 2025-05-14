@@ -10,7 +10,7 @@
         <div class="hero-content pb-5 text-center">
           <h3 class="mt-5">Orden #{{ n_orden.toString().padStart(6,'0') }}</h3>
           <div class="row">   
-            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">La orden  #{{ n_orden.toString().padStart(6,'0') }} se realizó el <strong>{{ cDate(venta.createdAt) }}</strong> y actualmente se encuentra en <strong>{{ item.estado_orden }}</strong>.</p>
+            <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">La orden  #{{ n_orden.toString().padStart(6,'0') }} se realizó el <strong>{{ cDate(venta.createdAt) }}</strong> y actualmente se encuentra en <strong>{{ estado }}</strong>.</p>
               <p class="text-muted">Si tiene alguna pregunta, no dude en<a > contactarnos</a>, nuestro centro de atención al cliente está trabajando para usted de <br> 8:00 a 7:00, Lunes a Viernes</p></div>
           </div>
         </div>
@@ -120,7 +120,8 @@ export default {
       detalles: [],
       acceso: true,
       load_data: true,
-      n_orden : 0
+      n_orden : 0,
+      estado: ''
     }
   },
   beforeMount(){
@@ -143,6 +144,7 @@ export default {
         this.detalles = result.data.detalles
         this.acceso= true
         this.n_orden = this.venta.serie
+        this.estado = this.venta.estado_orden
         console.log(result)
         }
         this.load_data = false;
