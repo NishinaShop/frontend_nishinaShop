@@ -34,8 +34,8 @@
          </p>
  
          <!-- Button -->
-         <router-link to="/dashboard" class="btn btn-lg btn-primary text-white">
-             Generar orden </router-link>
+         <button class="btn btn-lg btn-primary text-white" v-on:click="">
+             Generar orden </button>
          
          
          </div>
@@ -48,6 +48,7 @@
 
 </style>
 <script>
+import axios from 'axios';
 export default{
   name: 'pagoSPEIApp',
   data(){
@@ -61,6 +62,8 @@ export default{
       navigator.clipboard.writeText(this.textoCompleto).then(() => {
         alert('Texto copiado al portapapeles');
       });
+    },
+    generar_orden(){
     },
   }
 }

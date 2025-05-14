@@ -32,7 +32,7 @@
                   </div>
                 </div>
               </div>
-              <div class="block-body" >
+              <div class="block-body" v-if="direcciones.length == 0">
                 <div class="row ">
                   <div class="mb-4  align-items-center">
                     <label class="">
@@ -47,7 +47,7 @@
             </div>  
             <!--direccion box-->         
             <div class="mb-5">
-              <div class="cart">
+              <div class="cart d-none d-md-block">
                 <div class="cart-wrapper">
                   <div class="cart-header text-center ">
                     <div class="row">
@@ -79,9 +79,50 @@
                   </div>
                 </div>
               </div>
+              <div class="cart d-md-none">
+              <div class="">
+                <div class="cart-header text-center">
+                  <div class="row">
+                    <div class="text-center">Productos</div>
+                  </div>
+                </div>
+                <div class="cart-body" v-if="!load_data">
+                  <!-- Product-->
+                  <div class="" v-for="item in productos">
+                    <div class=" ">
+                      <div class="">
+                        <div class="d-flex justify-content-start mb-3"><router-link :to="{name: 'detalles_producto',params:{slug: item.producto.slug}}">
+                          <img :src="item.producto.portada"  style="width: 120px;">
+                        </router-link>
+                          <div class="cart-title text-start"><router-link class="text-uppercase text-dark" :to="{name: 'detalles_producto',params:{slug: item.producto.slug}}">
+                            <span>{{ item.producto.nombre.substr(0,10) }}</span>
+                          </router-link><br>
+                          <span class="text-muted text-sm">Talla: {{ item.variedad.talla }}</span><br><span class="text-muted text-sm">Color: {{ item.variedad.color }}</span>
+                          <div>
+                            Precio: {{convertCurrency(item.producto.precio)}}, Cantidad:  {{ item.cantidad }}
+                          </div>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <span>Total: {{ convertCurrency(item.producto.precio * item.cantidad) }}</span>
+                            
+                          </div>
+                          </div>
+                          </div>
+                      </div>
+                     </div>
+                  </div>
+                </div>
+              </div>
+            </div> 
             </div>
             
-            <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row"><router-link class="btn  btn-dark" to="/detalles_carrito"> <i class="fa fa-angle-left me-2" ></i>Regresar al carrito</router-link><router-link class="btn btn-dark" to="/pagos/spei">Pagar via SPEI<i class="fa fa-angle-right ms-2"></i></router-link></div>
+            <div class="mb-2 d-flex  justify-content-between flex-column flex-lg-row">
+              <router-link class="btn  btn-dark" to="/detalles_carrito"> <i class="fa fa-angle-left me-2" ></i>Regresar al carrito</router-link>
+              
+              <button class="btn btn-dark" v-on:click="pago_spei()">Pagar via SPEI<i class="fa fa-angle-right ms-2"></i></button>
+            
+            </div>
+            <div class="text-danger text-end"><span>{{msn_spei}}</span></div>
+            
           </div>
           <div class="col-lg-4">
             <div class="block mb-5">
@@ -154,7 +195,8 @@ export default {
       load_data: true,
       venta:{},
       items: [],
-      msn_error: ''
+      msn_error: '',
+      msn_spei: ''
     }
   },
   methods:{
@@ -203,6 +245,8 @@ export default {
     seleccionar_direccion(event){
       this.venta.direccion = event.target.value
       console.log(this.venta.direccion)
+      this.msn_error = ''
+      this.msn_spei = ''
     },
     mecadopago(){
       if(this.venta.direccion == null){
@@ -232,6 +276,15 @@ export default {
   });
 });
     
+      }
+    },
+    pago_spei(){
+      if(this.venta.direccion == null){
+        this.msn_spei = 'Selecciona una direccion'
+      }else {
+       this.$router.push({ name: 'pago_spei', params: { direccion: this.venta.direccion } });
+ 
+
       }
     }
   },

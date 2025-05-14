@@ -7,6 +7,8 @@
           <h3 class="mt-5">Detalles del carrito</h3>
           <div class="row">   
             <div class="col-xl-8 offset-xl-2"><p class="lead text-muted"> Tienes {{ n_productos }} productos en tu carrito</p></div>
+            <p class="text-muted">Tiempo restante para completar tu compra: <b>{{ Math.floor(countdown / 60) }}:{{ (countdown % 60).toString().padStart(2, '0') }}</b></p>
+
           </div>
         </div>
       </div>
@@ -67,7 +69,7 @@
               <div class="">
                 <div class="cart-header text-center">
                   <div class="row">
-                    <div class="text-center">Producto</div>
+                    <div class="text-center">Productos</div>
                   </div>
                 </div>
                 <div class="cart-body" v-if="!load_data">
@@ -162,9 +164,15 @@ export default {
       load_data: true,
       envio:1,
       msn_cart : '',
-      msn_vacio: ''
+      msn_vacio: '',
+      timer: null,
+    countdown: 3600,
+    intervalo: null
     }
   },
+  mounted() {
+  this.verificarTemporizador()
+},
   methods:{
     init_carrito() {
       
@@ -215,6 +223,50 @@ export default {
           this.$socket.emit('send_cart',true)
         })
     },
+    iniciarContador() {
+    clearTimeout(this.timer)
+    clearInterval(this.intervalo)
+
+    this.intervalo = setInterval(() => {
+      this.countdown--
+      if (this.countdown <= 0) {
+        this.borrar_carrito()
+      }
+    }, 1000)
+  },
+  reiniciarTemporizador() {
+    const nuevaExpiracion = Date.now() + 3600000// 10 minutos
+    localStorage.setItem('carrito_expiracion', nuevaExpiracion.toString())
+    this.countdown = 3600
+    this.iniciarContador()
+  },
+  borrar_carrito(){
+    axios.delete(this.$token+'/eliminar_carrito',{
+      headers:{
+        'Content-Type': 'application/json',
+        'Authorization': this.$store.state.token
+      }
+    }).then((result)=>{
+      this.$socket.emit('send_cart',true)
+    })
+    this.$socket.emit('send_cart',true)
+  },
+  verificarTemporizador() {
+    const expiracion = localStorage.getItem('carrito_expiracion')
+
+    if (expiracion) {
+      const tiempoRestante = Math.floor((parseInt(expiracion) - Date.now()) / 1000)
+
+      if (tiempoRestante <= 0) {
+        this.borrar_carrito()
+      } else {
+        this.countdown = tiempoRestante
+        this.iniciarContador()
+      }
+    } else {
+      this.reiniciarTemporizador()
+    }
+  },
   },
   beforeMount(){
     this.init_carrito()
