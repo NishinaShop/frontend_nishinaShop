@@ -16,9 +16,9 @@
       <div class="container">
         <div class="row mb-5"> 
           <div class="col-lg-8">
-            <div class="cart">
+            <div class="cart d-none d-md-block">
               <div class="cart-wrapper">
-                <div class="cart-header text-center">
+               <div class="cart-header  text-center">
                   <div class="row">
                     <div class="col-5">Producto</div>
                     <div class="col-2">Precio</div>
@@ -62,6 +62,65 @@
                 </div>
               </div>
             </div>
+            <!-- Version mobil-->
+             <div class="cart d-md-none">
+              <div class="">
+                <div class="cart-header text-center">
+                  <div class="row">
+                    <div class="text-center">Producto</div>
+                  </div>
+                </div>
+                <div class="cart-body" v-if="!load_data">
+                  <!-- Product-->
+                  <div class="" v-for="item in carrito">
+                    <div class=" ">
+                      <div class="">
+                        <div class="d-flex justify-content-start mb-3"><router-link :to="{name: 'detalles_producto',params:{slug: item.producto.slug}}">
+                          <img :src="item.producto.portada"  style="width: 120px;">
+                        </router-link>
+                          <div class="cart-title text-start"><router-link class="text-uppercase text-dark" :to="{name: 'detalles_producto',params:{slug: item.producto.slug}}">
+                            <span>{{ item.producto.nombre.substr(0,10) }}</span>
+                          </router-link><br>
+                          <span class="text-muted text-sm">Talla: {{ item.variedad.talla }}</span><br><span class="text-muted text-sm">Color: {{ item.variedad.color }}</span>
+                          <div>
+                            Precio: {{convertCurrency(item.producto.precio)}}, Cantidad:  {{ item.cantidad }}
+                          </div>
+                          <div class="d-flex justify-content-between align-items-center">
+                            <span>Total: {{ convertCurrency(item.producto.precio * item.cantidad) }}</span>
+                            <a
+                              class="btn btn-danger"
+                              style="cursor:pointer"
+                              @click="eliminar_producto_cart(item._id)"
+                            >
+                              <i class="fa fa-times"></i>
+                            </a>
+                          </div>
+                          
+                        
+                          </div>
+                          </div>
+                      </div>
+                     </div>
+                  </div>
+                </div>
+                <div class="cart-body" v-if="n_productos === 0 && !load_data">
+                  <div class="row">
+                    <div class="col-12">
+                      <p><b>El carrito esta vacio</b></p>
+                    </div>
+                  </div>
+                  <div class="cart-body" v-if="load_data">
+                  <div class="row">
+                    <div class="col-12">
+                      <img src="../../../public/assets/img/loading.gif" style="width: 60px !important;">
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div> 
+               
+             <!--Fin version movil-->
             <div class="my-5 d-flex justify-content-between flex-column flex-lg-row"><router-link class="btn btn-dark " to="/catalogo"><i class="fa fa-chevron-left"></i> Continuar comprando</router-link></div>
           </div>
           <div class="col-lg-4">

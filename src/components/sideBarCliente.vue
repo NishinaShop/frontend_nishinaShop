@@ -12,8 +12,9 @@
         <p class="text-muted text-sm mb-0"></p>
       </div>
       <nav class="customer-nav">
-        <a
+        <router-link
           class=" list-group-item d-flex justify-content-between align-items-center text-decoration-none"
+          to="/cuenta/ordenes"
           ><span>
             <svg class="svg-icon svg-icon-heavy me-2">
               <use xlink:href="#paper-bag-1"></use></svg
@@ -21,7 +22,7 @@
           >
           <div class="badge rounded-pill bg-light text-dark fw-normal px-3">
             {{ n_ordenes }}
-          </div></a
+          </div></router-link
         ><a
           class="list-group-item d-flex justify-content-between align-items-center text-decoration-none"
           href="customer-account.html"
@@ -40,7 +41,7 @@
           ></router-link
         ><a
           class="list-group-item d-flex justify-content-between align-items-center text-decoration-none"
-          href="customer-login.html"
+          @click="logout()"
           ><span>
             <svg class="svg-icon svg-icon-heavy me-2">
               <use xlink:href="#exit-1"></use></svg
@@ -58,6 +59,15 @@ export default {
     return{
       n_ordenes : 0,
     }
-  }
+  },
+    methods:{
+      logout(){
+      this.$store.dispatch("logout");
+      if(this.$router.path !== '/') this.$router.push({ name: "home" });
+      this.carrito = []
+      this.count_cart = 0
+      /*window.location.reload()*/ 
+    }
+    }
 };
 </script>

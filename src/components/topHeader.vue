@@ -23,7 +23,7 @@
                 alt=""
                 class="image-24px"
               />
-              <a class="_14px-text-white" href="https://wa.me/524422325235">
+              <a class="_14px-text-white" href="https://wa.me/524428804068">
                 Hacer pedido via whats'app
               </a>
             </div>
@@ -118,7 +118,7 @@
                   data-w-id="4ef02e47-0ea5-5857-a6ac-bbd1e53c8b90"
                   class="nav-list"
                 >
-                  <router-link class="nav-link w--current" to="/"
+                  <router-link class="nav-link " to="/"
                     >Inicio</router-link
                   >
                 </li>
@@ -129,12 +129,12 @@
                 </li>
                 <li class="nav-list-for-dropdown">
                   <div class="nav-icon-and-text-wrapper">
-                    <a href="/index.html" class="nav-link"> Temporada </a>
+                    <router-link class="nav-link"  to="/">Temporada</router-link>
                   </div>
                 </li>
               </ul>
-              <a
-                href="/index.html"
+              <router-link
+                to="/"
                 aria-current="page"
                 class="site-logo-wrapper-hide-in-mobile w--current"
                 aria-label="home"
@@ -145,14 +145,14 @@
                   style="width: 200px !important;"
                   class="img-fluid-logo"
                 />
-              </a>
+            </router-link>
               <ul role="list" class="nav-menu w-list-unstyled">
                 <li
                   data-w-id="dc0d01a4-7c09-7606-9f50-dd1e1319b401"
                   class="nav-list"
                 >
                   <div class="nav-icon-and-text-wrapper">
-                    <a href="/index.html" class="nav-link"> Nosotros </a>
+                    <router-link class="nav-link" @click="cerrarMenu()" to="/">Nosotros</router-link>
                   </div>
                 </li>
                 <li
@@ -160,7 +160,7 @@
                   class="nav-list"
                 >
                   <div class="nav-icon-and-text-wrapper">
-                    <a href="/index.html" class="nav-link"> Mayoristas </a>
+                    <router-link class="nav-link" @click="cerrarMenu()" to="/">Contacto</router-link>
                   </div>
                 </li>
                 <li
@@ -168,7 +168,7 @@
                   class="nav-list"
                 >
                   <div class="nav-icon-and-text-wrapper">
-                    <a href="/index.html" class="nav-link"> Contacto </a>
+                    <router-link class="nav-link" @click="cerrarMenu()" to="/">Mayoristas</router-link>
                   </div>
                 </li>
               </ul>
@@ -333,10 +333,13 @@
               <!-- Menú desplegable -->
               <ul class="dropdown-menu dropdown-menu-animated" aria-labelledby="userDropdown">
                 <li>
+                  <router-link class="dropdown-item btn" to="/cuenta/ordenes"><b>Ordenes</b></router-link>
+                </li>
+                <li>
                   <router-link class="dropdown-item btn" to="/cuenta/direcciones"><b>Direcciones</b></router-link>
                 </li>
                 <li>
-                  <a class="dropdown-item btn" @click="logout()"><b>Cerrar sesión</b></a>
+                  <a class="dropdown-item btn" @click="logout()"><b>Cerrar sesión</b></a> 
                 </li>
               </ul>
             </div>
@@ -503,12 +506,30 @@ export default {
       total: 0
     };
   },
+  mounted() {
+  document.addEventListener('click', this.handleClickOutside);
+},
+beforeUnmount() {
+  document.removeEventListener('click', this.handleClickOutside);
+},
   methods: {
     cerrarMenu() {
     const menu = document.getElementById('navbarCollapse');
     if (menu && menu.classList.contains('show')) {
       const collapse = bootstrap.Collapse.getInstance(menu) || new bootstrap.Collapse(menu);
       collapse.hide();
+    }
+  }, handleClickOutside(event) {
+    const menu = document.getElementById('navbarCollapse');
+    const toggle = document.querySelector('.navbar-toggler');
+
+    if (
+      menu &&
+      menu.classList.contains('show') &&
+      !menu.contains(event.target) &&
+      !toggle.contains(event.target)
+    ) {
+      this.cerrarMenu();
     }
   },
     logout() {

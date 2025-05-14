@@ -358,6 +358,8 @@ export default {
         this.msn_error = 'ingrese una cantidad'
       }else if(this.obj_carrito.cantidad <= 0){
         this.msn_error = 'ingrese una cantidad valida'
+      }else if(!this.$store.state.token){
+        this.msn_error = 'Inicia sesión para agregar al carrito'
       }else {
         console.log(this.obj_carrito)
         this.upload_cart()

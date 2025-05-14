@@ -38,13 +38,17 @@
                       v-model="password"
                     />
                   </div>
-                  <div class="mb-4 text-center" v-if="msn_error_login">
-                    <small class="text-danger">{{ msn_error_login }}</small>
-                  </div>
+                 
                   <div class="mb-4 text-center">
                     <button class="btn btn-outline-dark" type="button" v-on:click="login()">
-                      <i class="fa fa-sign-in-alt me-2"></i> ingresar
+                      <i v-if="!gif" class="fa fa-sign-in-alt me-2"></i><img v-if="gif"  class="me-2"src="https://res.cloudinary.com/dqitdaxd8/image/upload/kOnzy_ikzcfe.gif" style="width: 25px; height: auto;"> ingresar
                     </button>
+                     <div class="mt-4 text-center" v-if="msn_error_login">
+                    <small class="text-danger">{{ msn_error_login }}</small>
+                  </div> 
+                  <div class="mt-4 text-center" v-if="msn_login">
+                    <small class="text-success">{{ msn_login }}</small>
+                  </div>
                   </div>
                 </form>
               </div>
@@ -110,7 +114,9 @@ export default {
     email: '',
     password:'',
     msn_error_login: '',
-    msn_success : ''
+    msn_success : '',
+    gif : false,
+    msn_login: ''
     }
   },
   methods:{
@@ -149,6 +155,7 @@ export default {
         this.msn_error_login = 'Ingrese una contraseña'
       }else{
         this.msn_error_login = ''
+        this.gif = true
         let data = {
           email: this.email,
           password: this.password
@@ -159,12 +166,17 @@ export default {
           }
         }).then((result)=>{
           if(result.data.message){
+            this.gif = false
             this.msn_error_login  = result.data.message
           }else{
+            this.gif = false
+            this.msn_login = 'Inicio de sesión exitoso.'
             this.$store.dispatch('saveToken',result.data.token)
             this.$store.dispatch('saveUser',JSON.stringify(result.data.cliente))
-            this.$router.push({name:'home'})
-            this.$socket.emit('send_cart', true)
+                        setTimeout(() => {
+              this.$router.push({name:'home'})
+              this.$socket.emit('send_cart', true)
+            }, 2000);
           }
         })
       }

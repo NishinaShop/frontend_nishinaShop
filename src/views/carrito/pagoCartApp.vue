@@ -81,7 +81,7 @@
               </div>
             </div>
             
-            <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row"><router-link class="btn  btn-dark" to="/detalles_carrito"> <i class="fa fa-angle-left me-2" ></i>Regresar al carrito</router-link><a class="btn btn-dark" href="checkout5.html">Pagar via SPEI<i class="fa fa-angle-right ms-2"></i></a></div>
+            <div class="mb-5 d-flex justify-content-between flex-column flex-lg-row"><router-link class="btn  btn-dark" to="/detalles_carrito"> <i class="fa fa-angle-left me-2" ></i>Regresar al carrito</router-link><router-link class="btn btn-dark" to="/pagos/spei">Pagar via SPEI<i class="fa fa-angle-right ms-2"></i></router-link></div>
           </div>
           <div class="col-lg-4">
             <div class="block mb-5">
