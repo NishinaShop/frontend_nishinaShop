@@ -12,13 +12,13 @@
         </div>
 </section>
 <section class="hero" v-if="!msn_error">
-      <div class="container mt-5" v-if="pago.status == 'approved'">
+      <div class="container mt-5" >
         <!-- Hero Content-->
         <div class="hero-content pb-5 text-center">
           <h3 class="mb-5">Validando pago...</h3>
           <div class="row">   
             <div class="col-xl-8 offset-xl-2">
-              <img src="../../public/assets/img/loadingPay.gif" style="width: 80px;">
+              <img src="https://res.cloudinary.com/dqitdaxd8/image/upload/kOnzy_ikzcfe.gif" style="width: 80px;">
           </div>
         </div>
       </div>
@@ -71,7 +71,7 @@ export default{
     redireccion(){
       setTimeout(() => {
         this.$router.push({name: 'pago_carrito'})
-      }, 4000);
+      }, 3000);
       
     },
     init_data(){

@@ -364,6 +364,9 @@
               <!-- Menú desplegable -->
               <ul class="dropdown-menu dropdown-menu-animated" aria-labelledby="userDropdown">
                 <li>
+                  <router-link class="dropdown-item btn" to="/cuenta/ordenes"><b>Ordenes</b></router-link>
+                </li>
+                <li>
                   <router-link class="dropdown-item btn" to="/cuenta/direcciones"><b>Direcciones</b></router-link>
                 </li>
                 <li>

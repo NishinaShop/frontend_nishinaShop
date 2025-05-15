@@ -38,7 +38,7 @@
                     <label class="">
                       <span class="mb-2 ">No tienes direcciones guardadas.</span>
                       <div class="mt-2">
-                        <router-link class="btn btn-dark" type="button" to="/cuenta/direcciones">Agregar direccion</router-link>
+                        <router-link class="btn btn-dark" type="button" to="/nueva_direccion">Agregar direccion</router-link>
                       </div>
                     </label>
                   </div>
@@ -264,7 +264,7 @@ export default {
       axios.post('https://api.mercadopago.com/checkout/preferences',data,{
         headers:{
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer TEST-7802715175959909-050803-6580fa6051eed313c72af5b01407940f-2426338693'
+          'Authorization': 'Bearer APP_USR-fd0ea6f0-73a1-41d3-9a14-735039da440b'
         }
       }).then((result)=>{
         window.location.href = result.data.sandbox_init_point
