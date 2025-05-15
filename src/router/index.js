@@ -15,7 +15,7 @@ const routes = [
   {path:'/cuenta/venta/:id', name: 'venta_detalle', component: ()=> import ('@/views/cliente/ventaDetalleApp.vue'),meta: { requiresAuth: true }},
   {path:'/pagos/spei/:direccion', name: 'pago_spei', component: ()=> import ('@/views/carrito/pagoSPEIApp.vue'),meta: { requiresAuth: true  }},
   {path:'/cuenta/ordenes', name: 'ordenes_cliente', component: ()=> import ('@/views/cliente/ordenesClienteApp.vue'),meta: { requiresAuth: true }},
-  {path:'/nueva_direccion', name: 'nueva_direccion', component: ()=> import ('@/views/cliente/primeraDireccionApp copy.vue'),meta: { requiresAuth: true }}
+  {path:'/nueva_direccion', name: 'nueva_direccion', component: ()=> import ('@/views/cliente/primeraDireccionApp.vue'),meta: { requiresAuth: true }}
 ]
 
 const router = createRouter({

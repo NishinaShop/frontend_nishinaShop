@@ -50,7 +50,7 @@
                     class="img-fluid"
                     :src="item.portada"
                     alt="product"
-                    style="height: 420px !important; he "
+                    style="height: 420px !important;"
                   />
                   <div class="product-hover-overlay">
                     <router-link  :to="{name: 'detalles_producto',params:{slug: item.slug}}"
@@ -233,9 +233,48 @@
         <!-- /Sidebar end-->
       </div>
     </div>
+    <!-- movil -->
+    <div class="container-fluid p-2 d-lg-none">
+      <small class="d-block text-start">Categorias:</small>
+      <div class="scroll-horizontal mb-1">
+    <button class="btn btn-dark">Blusas</button>
+    <button class="btn btn-dark">Tops</button>
+    <button class="btn btn-dark">Abrigos</button>
+    <button class="btn btn-dark">Blazer</button>
+    <button class="btn btn-dark">Overtsize</button>
+  </div>
+    <!-- Fila de productos -->
+    <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-2" id="products-container">
+        <!-- Producto 1 -->
+        <div class="col" v-for="item in data_catalogo">
+            <div class="product">
+              <div class="product-image  h-100">
+                <router-link :to="{name: 'detalles_producto',params:{slug: item.slug}}"><img :src="item.portada" class="card-img-top img-fluid h-100" style="height: 280px !important;" alt="Producto 1"></router-link>
+                <div class="card-body p-2">
+                    <h6 class="card-title mb-1">{{ item.nombre }}</h6>
+                    <p class="card-text text-dark fw-bold">{{convertCurrency(item.precio)}}</p> 
+                </div>
+            </div>
+            </div>
+        </div>
+        
+        <!-- Producto 2 -->
+    </div>
+</div>
+    <!-- movil -->
   </div>
 </template>
+<style>
+  .scroll-horizontal {
+      overflow-x: auto;
+      white-space: nowrap;
+    }
 
+    .scroll-horizontal .btn {
+      display: inline-block;
+      margin-right: 0.1rem;
+    }
+</style>
 <script>
 import topHeader from "@/components/topHeader.vue";
 import bottomFooter from "@/components/footer.vue";
