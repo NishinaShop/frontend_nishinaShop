@@ -264,7 +264,7 @@ export default {
       axios.post('https://api.mercadopago.com/checkout/preferences',data,{
         headers:{
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer APP_USR-fd0ea6f0-73a1-41d3-9a14-735039da440b'
+          'Authorization': 'Bearer APP_USR-7802715175959909-050803-236ae1136ab2cd1e9dabc0225f1bc974-2426338693'
         }
       }).then((result)=>{
         window.location.href = result.data.sandbox_init_point
