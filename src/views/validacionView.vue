@@ -75,7 +75,7 @@ export default{
       
     },
     init_data(){
-    this.estado = this.$route.params.estado 
+    this.estado = this.$route.params.status
     console.log(this.estado)
     this.payment_id = this.$route.query.payment_id
     let user_data = JSON.parse(this.$store.state.user)
