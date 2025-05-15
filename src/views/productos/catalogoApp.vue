@@ -15,11 +15,11 @@
         </div>
       </div>
     </section>
-    <div class="container">
+    <div class="container d-none d-md-inline">
       <div class="row">
         <!-- Grid -->
         <div class="products-grid col-xl-8 col-lg-8 order-lg-2">
-          <header class="product-grid-header">
+          <header class="product-grid-header ">
             <div class="me-3 mb-3">
               Showing <strong>1-12 </strong>of <strong>158 </strong>products
             </div>
@@ -41,7 +41,7 @@
           </header>
           <div class="row" >
             <!-- product-->
-            <div class="col-xl-4 col-6" v-for=" item in data_catalogo">
+            <div class="col-xl-4  col-6" v-for=" item in data_catalogo">
               <div class="product">
                 <div class="product-image">
                   <div class="ribbon ribbon-warning " v-if="item.descuento">Descuento</div>
@@ -50,6 +50,7 @@
                     class="img-fluid"
                     :src="item.portada"
                     alt="product"
+                    style="height: 420px !important; he "
                   />
                   <div class="product-hover-overlay">
                     <router-link  :to="{name: 'detalles_producto',params:{slug: item.slug}}"
@@ -76,7 +77,7 @@
         </div>
         <!-- / Grid End-->
         <!-- Sidebar-->
-        <div class="sidebar col-xl-3 col-lg-4 order-lg-1 ms-5">
+        <div class="sidebar col-xl-3 col-lg-4 order-lg-1 ms-5 d-none d-md-inline">
           <div class="sidebar-block px-3 px-lg-0 me-lg-4 ">
             <a
               class="d-lg-none block-toggler"

@@ -224,9 +224,16 @@ export default {
               unit_price: item.producto.precio,
             })
           }
+          this.items.push({
+              title: 'Envio',
+              quantity: 1,
+              unit_price: this.envio,
+              currency_id: 'MXN'
+          });
           this.productos = result.data.cart_general
           this.load_data = false
         }); 
+        
       }
     },
     convertCurrency(number){
@@ -267,7 +274,7 @@ export default {
           'Authorization': 'Bearer APP_USR-7802715175959909-050803-236ae1136ab2cd1e9dabc0225f1bc974-2426338693'
         }
       }).then((result)=>{
-        window.location.href = result.data.sandbox_init_point
+        window.location.href = result.data.init_point
       }).catch((error) => {
   console.error("Error detallado:", {
     status: error.response?.status,
