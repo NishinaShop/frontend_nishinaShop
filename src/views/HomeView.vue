@@ -91,7 +91,7 @@
                   </div>
                   <div class="hero-image-wrapper" >
                     <img
-                      src="/assets/img/66bf22afff627f7824e9772b_image 15.avif"
+                      src="https://res.cloudinary.com/dqitdaxd8/image/upload/Asunto_fz5nmh.png"
                       loading="lazy"
                       style="
                         opacity: 1;
@@ -103,8 +103,7 @@
                       sizes="(max-width: 479px) 93vw, (max-width: 767px) 92vw, (max-width: 991px) 74vw, 46vw"
                       alt=""
                       srcset="
-                        https://cdn.prod.website-files.com/66bf11353c04678c8aeb0cc3/66bf22afff627f7824e9772b_image%2015-p-500.avif  500w,
-                        https://cdn.prod.website-files.com/66bf11353c04678c8aeb0cc3/66bf22afff627f7824e9772b_image%2015.avif       1154w
+                        https://res.cloudinary.com/dqitdaxd8/image/upload/Asunto_fz5nmh.pnghttps://res.cloudinary.com/dqitdaxd8/image/upload/Asunto_fz5nmh.png       1154w
                       "
                       class="hero-image"
                     />
@@ -192,7 +191,7 @@
                   </div>
                   <div class="hero-image-wrapper" aria-hidden="true">
                     <img
-                      src="/assets/img/66c8411a42109caacaabb250_image 17.png"
+                      src="/assets/img/66c8411a42109caacaabb250_image17.png"
                       loading="lazy"
                       style="
                         opacity: 1;
