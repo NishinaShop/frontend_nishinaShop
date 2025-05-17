@@ -74,13 +74,13 @@
                       ">
                         <div class="button-text-wrapper" aria-hidden="true">
                         <div class="default-text" aria-hidden="true">
-                          Explorar colecciones
+                          Explorar catalogo
                         </div>
                         <div class="hover-text" aria-hidden="true">
-                          Explorar colecciones
+                          Explorar catalogo
                         </div>
                       </div>
-                      <div class="icon" aria-hidden="true">arrow_outward</div>
+                      <div class="icon" aria-hidden="true"></div>
                       <div
                         class="button-hover"
                         aria-hidden="true"
@@ -89,23 +89,12 @@
                       </router-link>
                     
                   </div>
-                  <div class="hero-image-wrapper" >
+                  <div  >
                     <img
                       src="https://res.cloudinary.com/dqitdaxd8/image/upload/Asunto_fz5nmh.png"
                       loading="lazy"
-                      style="
-                        opacity: 1;
-                        transform: translate3d(0px, 0%, 0px) scale3d(1, 1, 1)
-                          rotateX(0deg) rotateY(0deg) rotateZ(0deg)
-                          skew(0deg, 0deg);
-                        transform-style: preserve-3d;
-                      "
-                      sizes="(max-width: 479px) 93vw, (max-width: 767px) 92vw, (max-width: 991px) 74vw, 46vw"
-                      alt=""
-                      srcset="
-                        https://res.cloudinary.com/dqitdaxd8/image/upload/Asunto_fz5nmh.pnghttps://res.cloudinary.com/dqitdaxd8/image/upload/Asunto_fz5nmh.png       1154w
-                      "
-                      class="hero-image"
+                     style="height: 750px !important;"
+                      
                     />
                   </div>
                 </div>
@@ -175,13 +164,13 @@
                       ">
                         <div class="button-text-wrapper" aria-hidden="true">
                         <div class="default-text" aria-hidden="true">
-                          Explorar colecciones
+                          Explorar catalogo
                         </div>
                         <div class="hover-text" aria-hidden="true">
-                          Explorar colecciones
+                          Explorar catalogo
                         </div>
                       </div>
-                      <div class="icon" aria-hidden="true">arrow_outward</div>
+                      <div class="icon" aria-hidden="true"></div>
                       <div
                         class="button-hover"
                         aria-hidden="true"
@@ -280,13 +269,13 @@
                       ">
                         <div class="button-text-wrapper" aria-hidden="true">
                         <div class="default-text" aria-hidden="true">
-                          Explorar colecciones
+                          Explorar catalogo
                         </div>
                         <div class="hover-text" aria-hidden="true">
-                          Explorar colecciones
+                          Explorar catalogo
                         </div>
                       </div>
-                      <div class="icon" aria-hidden="true">arrow_outward</div>
+                      <div class="icon" aria-hidden="true"></div>
                       <div
                         class="button-hover"
                         aria-hidden="true"
@@ -526,7 +515,7 @@
                   <div class="default-text ">Visitar ahora</div>
                   <div class="hover-text">visitar ahora</div>
                 </div>
-                <div class="icon">arrow_outward</div>
+                <div class="icon"></div>
                 <div class="button-hover" style="width: 0%"></div>
                 </router-link>
               
@@ -542,7 +531,7 @@
                   "
                   class="_40px-primary-rounded-icon"
                 >
-                  arrow_outward
+                  
                 </div>
                 </router-link>
               </a>
@@ -618,12 +607,6 @@
                           <img
                             loading="lazy"
                             :src="item.portada"
-                            alt=""
-                            sizes="(max-width: 479px) 100vw, (max-width: 767px) 94vw, (max-width: 991px) 45vw, 40vw"
-                            srcset="`
-                              {{item.portada}} 500w,
-                              {{item.portada}} 754w
-                            `"
                             :alt="item.nombre || 'Producto'"
                             class="product-thumbnail-hover"
                             style="opacity: 1;"
