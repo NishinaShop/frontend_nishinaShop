@@ -201,6 +201,7 @@ export default {
   },
   methods:{
     init_carrito() {
+      this.envio = this.$envio
       if(this.$store.state.token != null){
         this.load_data = true
         this.total = 0
@@ -271,7 +272,7 @@ export default {
       axios.post('https://api.mercadopago.com/checkout/preferences',data,{
         headers:{
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer APP_USR-8788473094996594-051918-4ed7980cdd2dd2238890f5683f673153-79319884'
+          'Authorization': `Bearer ${process.env.VUE_APP_MP_ACCESS_TOKEN}`
         }
       }).then((result)=>{
         window.location.href = result.data.init_point
@@ -279,7 +280,7 @@ export default {
   console.error("Error detallado:", {
     status: error.response?.status,
     data: error.response?.data,
-    message: error.message
+    message: error.message,
   });
 });
     

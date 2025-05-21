@@ -269,10 +269,10 @@
               </div>
             </div> -->
             <div class="nav-item dropdown"><router-link class="navbar-icon-link d-lg-none" to="/detalles_carrito"> 
-              <img src="https://res.cloudinary.com/dqitdaxd8/image/upload/3042571_shkf71.png" alt="Carrito de compras"class="image-24px">
-              <span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none"></span></router-link>
+              <img src="https://res.cloudinary.com/dqitdaxd8/image/upload/263142_ul8rwt.png" alt="Carrito de compras"class="image-24px">
+              <span class="text-sm ms-2 ms-lg-0 text-uppercase text-sm fw-bold d-none d-sm-inline d-lg-none"></span><div class="navbar-icon-link-badge">{{ count_cart }}                       </div></router-link>
                 <div class="d-none d-lg-block"><router-link class="navbar-icon-link" id="cartdetails"  to="/detalles_carrito" data-bs-target="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img src="https://res.cloudinary.com/dqitdaxd8/image/upload/3042571_shkf71.png" alt="Carrito de compras" class="img-icon-head">
+                  <img src="https://res.cloudinary.com/dqitdaxd8/image/upload/263142_ul8rwt.png" alt="Carrito de compras" class="img-icon-head">
                     <div class="navbar-icon-link-badge">{{ count_cart }}                       </div></router-link>
                   <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end p-4" aria-labelledby="cartdetails">
                     <div class="navbar-cart-product-wrapper">
