@@ -135,7 +135,7 @@
                   <li class="order-summary-item"><span>Subtotal: </span><span class="ms-6">{{ convertCurrency(total) }}</span></li>
                   <li class="order-summary-item"><span>Envio:</span><span class="ms-6">{{ convertCurrency(envio) }}</span></li>
                
-                  <li class="order-summary-item border-0"><span>Total:</span><strong class="order-summary-total ms-6 " >{{ convertCurrency(total) }}</strong></li>
+                  <li class="order-summary-item border-0"><span>Total:</span><strong class="order-summary-total ms-6 " >{{ convertCurrency(total+envio) }}</strong></li>
                 </ul>
               </div>
             </div>
@@ -191,7 +191,7 @@ export default {
       direcciones:[],
       productos:[],
       total: 0,
-      envio: 1,
+      envio: parseInt(this.$envio),
       load_data: true,
       venta:{},
       items: [],
@@ -216,7 +216,7 @@ export default {
           this.n_productos = result.data.cart_general.length
           for(var item of result.data.cart_general){
             let subtotal = item.producto.precio * item.cantidad
-            this.total = this.envio + subtotal 
+            this.total = this.total + subtotal 
             this.items.push({
               id: item.producto._id,
               title: item.producto.nombre,
