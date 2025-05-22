@@ -135,7 +135,7 @@
                 <ul class="order-summary mb-0 list-unstyled">
                   <li class="order-summary-item"><span>Subtotal: </span><span>&nbsp;&nbsp; {{ convertCurrency(total) }}</span></li>
                   <li class="order-summary-item"><span>Costo del envio:</span><span>&nbsp;&nbsp; {{ convertCurrency(envio) }}</span></li>
-                  <li class="order-summary-item border-0 "><span class="text-center">Total: </span><strong class="order-summary-total ">&nbsp;&nbsp; {{ convertCurrency(total+envio) }}</strong></li>
+                  <li class="order-summary-item border-0 "><span class="text-center">Total: </span><strong class="order-summary-total ">&nbsp;&nbsp; {{ convertCurrency(total) }}</strong></li>
                 </ul>
               </div>
               <button class="btn btn-dark" v-on:click="validar_carrito()">Proceder al pago <i class="fa fa-chevron-right"></i></button>
@@ -194,7 +194,7 @@ export default {
             console.log(result.data.cart_general)
           for(var item of result.data.cart_general){
             let subtotal = item.producto.precio * item.cantidad
-            this.total = this.total + subtotal 
+            this.total = this.envio + subtotal 
           }
           this.carrito = result.data.cart_general
           this.load_data = false
