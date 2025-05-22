@@ -175,7 +175,7 @@ export default {
 },
   methods:{
     init_carrito() {
-      
+      this.envio = this.$envio
       if(this.$store.state.token != null){
         this.load_data = true
         this.total = 0
