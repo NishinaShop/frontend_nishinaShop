@@ -20,6 +20,6 @@ app.use(new VueSocketIO({
 
 app.config.globalProperties.$url = 'https://api.nishinashop.com/api';
 app.config.globalProperties.$token = localStorage.getItem('token');
-app.config.globalProperties.$envio = ref(process.env.VUE_APP_PRECIO_ENVIO || '80') 
+app.config.globalProperties.$envio = ref(Number(process.env.VUE_APP_PRECIO_ENVIO) || 80) 
 
 app.use(store).use(router).mount('#app');

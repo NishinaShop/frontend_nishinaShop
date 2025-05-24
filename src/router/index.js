@@ -20,7 +20,14 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL || '/'),
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+   const isMobile = window.innerWidth < 768;
+  return {
+    top: isMobile ? 140 : 240,
+    behavior: 'smooth'
+    }
+  }
 })
 
 router.beforeEach((to, from, next) => {

@@ -72,45 +72,6 @@
               </div>
             </div>
             <div
-              data-w-id="e1b38ffc-dd80-e684-e744-5fda828b1b66"
-              class="footer-block"
-              style="
-                opacity: 1;
-                transform: translate3d(0px, 50px, 0px) scale3d(1, 1, 1)
-                  rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-                transform-style: preserve-3d;
-              "
-            >
-              <h3 class="footer-title-20px">Links</h3>
-              <div class="footer-list">
-                <a
-                  href="/index.html"
-                  aria-current="page"
-                  class="footer-link w--current"
-                >
-                  Inicio
-                </a>
-                <a
-                  href="/index.html"
-                  class="footer-link"
-                >
-                  Mujer
-                </a>
-                <a
-                  href="/index.html"
-                  class="footer-link"
-                >
-                  Hombre
-                </a>
-                <a
-                  href="/index.html"
-                  class="footer-link"
-                >
-                  Catalogo
-                </a>
-              </div>
-            </div>
-            <div
               id="w-node-e1b38ffc-dd80-e684-e744-5fda828b1b74-b75bd7b0"
               data-w-id="e1b38ffc-dd80-e684-e744-5fda828b1b74"
               class="footer-block"
@@ -121,19 +82,19 @@
                 transform-style: preserve-3d;
               "
             >
-              <h3 class="footer-title-20px">Paginas</h3>
+              <h3 class="footer-title-20px">Menu</h3>
               <div class="footer-list">
                 <a
                   href="/index.html"
                   class="footer-link"
                 >
-                  Temporadas
+                  Inicio
                 </a>
                 <a
                   href="/index.html"
                   class="footer-link"
                 >
-                  Nosotros
+                  Catalogo
                 </a>
                 <a
                   href="/index.html"
@@ -162,11 +123,11 @@
               <h3 class="footer-title-20px">Direccion</h3>
               <div class="footer-list text-start">
                 <p>
-                  Plaza del Sol, Local D1, Av. del Sol N1                  
-                  Fracc. del Sol, Queretaro, Qro  CP. 76114
+                  Ignacio Allende no 18 <br>                 
+                  Col. Santa Rosa Jauregui, Querétaro, Qro. CP. 76114
                 </p>
                 <p>contacto@nishinashop.com</p>
-                <p>(442) 123-4567</p>
+                <p>(442) 880-4068</p>
               </div>
             </div>
             <div

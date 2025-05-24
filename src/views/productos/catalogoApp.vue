@@ -79,13 +79,7 @@
         <!-- Sidebar-->
         <div class="sidebar col-xl-3 col-lg-4 order-lg-1 ms-5 d-none d-md-inline">
           <div class="sidebar-block px-3 px-lg-0 me-lg-4 ">
-            <a
-              class="d-lg-none block-toggler"
-              data-bs-toggle="collapse"
-              href="#categoriesMenu"
-              aria-expanded="false"
-              aria-controls="categoriesMenu"
-              >Product Categories</a
+            <a class="tile"><b>Productos</b></a
             >
             <div class="expand-lg collapse" id="categoriesMenu">
               <div class="nav nav-pills flex-column mt-4 mt-lg-0" role="menu">
@@ -93,21 +87,21 @@
                   class="sidebar-menu-item mb-2 active"
                   data-bs-toggle="collapse"
                   data-bs-target="#subcategories_0"
-                  aria-expanded="true"
+                  aria-expanded="false"
                   aria-controls="subcategories_0"
                   role="menuitem"
                 >
-                  <a class="nav-link active" href="#!"
-                    ><span>Jackets</span
+                  <a class="nav-link active"
+                    ><span>Genero</span
                     ><span class="sidebar-badge ms-2">123</span></a
                   >
                 </div>
                 <div class="collapse show" id="subcategories_0">
                   <div class="nav nav-pills flex-column ms-3">
-                    <a class="nav-link mb-2" href="#!">Lorem ipsum</a
-                    ><a class="nav-link mb-2" href="#!">Dolor</a
-                    ><a class="nav-link mb-2" href="#!">Sit amet</a
-                    ><a class="nav-link mb-2" href="#!">Donec vitae</a>
+                    <a class="nav-link mb-2" href="#!">Mujer</a
+                    ><a class="nav-link mb-2" href="#!">Hombre</a
+                    ><a class="nav-link mb-2" href="#!">Niña</a
+                    ><a class="nav-link mb-2" href="#!">Niño</a>
                   </div>
                 </div>
                 <div
@@ -119,115 +113,20 @@
                   role="menuitem"
                 >
                   <a class="nav-link" href="#!"
-                    ><span>Jeans &amp; chinos</span
+                    ><span>Categorias</span
                     ><span class="sidebar-badge ms-2">55</span></a
                   >
                 </div>
                 <div class="collapse" id="subcategories_1">
                   <div class="nav nav-pills flex-column ms-3">
-                    <a class="nav-link mb-2" href="#!">Lorem ipsum</a
-                    ><a class="nav-link mb-2" href="#!">Dolor</a
-                    ><a class="nav-link mb-2" href="#!">Sit amet</a
-                    ><a class="nav-link mb-2" href="#!">Donec vitae</a>
-                  </div>
-                </div>
-                <div
-                  class="sidebar-menu-item mb-2"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#subcategories_2"
-                  aria-expanded="false"
-                  aria-controls="subcategories_2"
-                  role="menuitem"
-                >
-                  <a class="nav-link" href="#!"
-                    ><span>Accessories</span
-                    ><span class="sidebar-badge ms-2">80</span></a
-                  >
-                </div>
-                <div class="collapse" id="subcategories_2">
-                  <div class="nav nav-pills flex-column ms-3">
-                    <a class="nav-link mb-2" href="#!">Sit amet</a
-                    ><a class="nav-link mb-2" href="#!">Donec vitae</a
-                    ><a class="nav-link mb-2" href="#!">Lorem ipsum</a
-                    ><a class="nav-link mb-2" href="#!">Dolor</a>
+                    <a class="nav-link mb-2" href="#!">Tops</a
+                    ><a class="nav-link mb-2" href="#!">Blusas</a
+                    ><a class="nav-link mb-2" href="#!">Pantalones</a
+                    ><a class="nav-link mb-2" href="#!">Conjuntos</a>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          
-          <div class="sidebar-block px-3 px-lg-0 me-lg-4">
-            <a
-              class="d-lg-none block-toggler"
-              data-bs-toggle="collapse"
-              href="#sizeFilterMenu"
-              aria-expanded="false"
-              aria-controls="sizeFilterMenu"
-              >Filter by size</a
-            >
-            <!-- Size filter menu-->
-            <div class="expand-lg collapse" id="sizeFilterMenu">
-              <h6 class="sidebar-heading d-none d-lg-block">Talla</h6>
-              <form class="mt-4 mt-lg-0" action="#">
-                <div class="mb-1">
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      id="size0"
-                      type="radio"
-                      name="size"
-                      checked
-                    />
-                    <label class="form-check-label text-start" for="size0">Small</label>
-                  </div>
-                </div>
-                <div class="mb-1">
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      id="size1"
-                      type="radio"
-                      name="size"
-                    />
-                    <label class="form-check-label text-start" for="size1">Medium</label>
-                  </div>
-                </div>
-                <div class="mb-1">
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      id="size2"
-                      type="radio"
-                      name="size"
-                    />
-                    <label class="form-check-label text-start" for="size2">Large</label>
-                  </div>
-                </div>
-                <div class="mb-1">
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      id="size3"
-                      type="radio"
-                      name="size"
-                    />
-                    <label class="form-check-label text-start" for="size3">X-Large</label>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="sidebar-block px-3 px-lg-0 me-lg-4">
-            <a
-              class="d-lg-none block-toggler"
-              data-bs-toggle="collapse"
-              href="#colourFilterMenu"
-              aria-expanded="false"
-              aria-controls="colourFilterMenu"
-              >Filter by colour</a
-            >
-            <!-- Size filter menu-->
-            
           </div>
         </div>
         <!-- /Sidebar end-->

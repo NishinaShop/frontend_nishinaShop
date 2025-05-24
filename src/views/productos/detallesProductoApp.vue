@@ -241,8 +241,8 @@
             <div class="product" >
               <div class="product-image">
                 <div class="ribbon ribbon-info">Nuevo</div><img class="img-fluid" :src="item.portada" alt="product"/>
-                <div class="product-hover-overlay"><a class="product-hover-overlay-link" href="detail.html"></a>
-                  <div class="product-hover-overlay-buttons"><router-link class="btn btn-dark btn-buy" :to="{name: 'detalles_producto',params:{slug: item.slug}}"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">ver</span></router-link>
+                <div class="product-hover-overlay"><a class="product-hover-overlay-link" ></a>
+                  <div class="product-hover-overlay-buttons"><router-link class="btn btn-dark btn-buy" :to="{name: 'detalles_producto',params:{slug: item.slug}}" :key="$route.fullPath"><i class="fa-search fa"></i><span class="btn-buy-label ms-2">ver</span></router-link>
                   </div>
                 </div>
               </div>
@@ -288,6 +288,17 @@ export default {
       user_data : JSON.parse(this.$store.state.user),
       gif : false
     }
+  },
+  watch: {
+    '$route.params.slug': {  
+      immediate: true,      
+      handler() {
+        this.init_data();  
+      }
+    }
+  },
+  mounted() {
+    this.init_data();       // Carga inicial
   },
     methods:{
     init_data(){
@@ -344,6 +355,8 @@ export default {
         this.gif = false
         this.$socket.emit('send_cart', true)
         this.msn_cart = 'Se agrego al carrito'
+        $('.detail-option-btn-label').removeClass('bg_variedad')
+        this.obj_carrito.cantidad = 1
         setTimeout(() => {
         this.msn_cart = ''
         }, 3000);

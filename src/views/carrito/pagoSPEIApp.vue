@@ -66,7 +66,6 @@ export default{
       detalles: [],
       total: 0,
       carrito: [],
-      envio: 1,
       load: false,
       msn_error: '',
       msn_generada: ''
@@ -94,6 +93,7 @@ console.log(this.payment_id);
       this.load = false
      }else{
        this.venta.detalles = this.detalles
+       console.log(this.venta)
       axios.post(this.$url+'/crear_venta_spei_cliente',this.venta,{
           headers:{
           'Content-Type': 'application/json',
@@ -102,11 +102,13 @@ console.log(this.payment_id);
         }).then((result)=>{
           if(result.data.message){
             this.msn_error = result.data.message
+            this.load = false
           }else{
             this.msn_generada = 'Se genero la orden redireccionando...'
             this.$socket.emit('send_cart',true)
             setTimeout(() => {
               this.$router.push({name: 'venta_detalle',params:{id:result.data.venta._id}})
+              this.load = false
             }, 3000);
           }
         })
@@ -117,7 +119,7 @@ console.log(this.payment_id);
     this.init_carrito()
     this.generarPaymentId()
     this.venta.transaccion = this.payment_id
-    this.venta.envio = this.envio
+    this.venta.envio = this.$envio
     this.venta.cliente = user_data._id
     if(this.$route.params.direccion){
     this.direccion = this.$route.params.direccion
@@ -150,7 +152,7 @@ console.log(this.payment_id);
               variedad: item.variedad._id
             })
           }
-          this.venta.total = this.total + this.envio
+          this.venta.total = this.total  
           console.log('total:', this.venta.total)
           this.carrito = result.data.cart_general
           

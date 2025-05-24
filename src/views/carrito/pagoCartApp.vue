@@ -18,7 +18,7 @@
           <div class="col-lg-8">
             <!--direccion box-->   
             <div class="block mb-5">
-              <div class="block-header">
+              <div class="block-header" ref="direccion">
                 <h6 class="text-uppercase mb-0"><b>Dirección de entrega</b></h6>
             </div>
               <div class="block-body" v-if="direcciones.length >= 1">
@@ -135,7 +135,7 @@
                   <li class="order-summary-item"><span>Subtotal: </span><span class="ms-6">{{ convertCurrency(total) }}</span></li>
                   <li class="order-summary-item"><span>Envio:</span><span class="ms-6">{{ convertCurrency(envio) }}</span></li>
                
-                  <li class="order-summary-item border-0"><span>Total:</span><strong class="order-summary-total ms-6 " >{{ convertCurrency(total+envio) }}</strong></li>
+                  <li class="order-summary-item border-0"><span>Total:</span><strong class="order-summary-total ms-6" >{{ convertCurrency(total+envio) }}</strong></li>
                 </ul>
               </div>
             </div>
@@ -182,6 +182,7 @@
 
 <script>
 import axios from 'axios'
+import { ref } from 'vue';
 var currencyFormatter = require ('currency-formatter');
 
 export default {
@@ -191,7 +192,7 @@ export default {
       direcciones:[],
       productos:[],
       total: 0,
-      envio: parseInt(this.$envio),
+      envio: 1,
       load_data: true,
       venta:{},
       items: [],
@@ -259,12 +260,22 @@ export default {
     mecadopago(){
       if(this.venta.direccion == null){
         this.msn_error = 'Selecciona una direccion'
+         setTimeout(() => {
+           this.$nextTick(() => {
+          this.$refs.direccion?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        });
+        
+        return;
+         }, 2000);
       }else{
         let data = {
         back_urls: {
-          success: 'https://nishinashop.onrender.com/validation/success/'+this.venta.direccion,
-          pending: 'https://nishinashop.onrender.com/validation/pending',
-          failure: 'https://nishinashop.onrender.com/validation/failure'
+          success: 'https://www.nishinashop.com/validation/success/'+this.venta.direccion,
+          pending: 'https://www.nishinashop.com/validation/pending',
+          failure: 'https://www.nishinashop.com/validation/failure'
         },
         items: this.items, 
         auto_return: 'approved',

@@ -311,7 +311,7 @@
               />
               <small class="w-inline-block d-none d-sm-inline">Ingresar</small>
             </router-link>
-            <div class="dropdown w-inline-block d-none d-sm-inline" v-if="$store.state.token">
+            <div class="dropdown w-inline-block d-none d-lg-inline" v-if="$store.state.token">
               <!-- Trigger del dropdown -->
               <a
                 class="w-inline-block dropdown-toggle"
