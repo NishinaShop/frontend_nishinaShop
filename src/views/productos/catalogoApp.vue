@@ -140,7 +140,7 @@
     <button class="btn btn-dark">Tops</button>
     <button class="btn btn-dark">Abrigos</button>
     <button class="btn btn-dark">Blazer</button>
-    <button class="btn btn-dark">Overtsize</button>
+    <button class="btn btn-dark">Overtsized</button>
   </div>
     <!-- Fila de productos -->
     <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-2" id="products-container">

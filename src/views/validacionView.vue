@@ -53,7 +53,7 @@ export default{
       detalles: [],
       total: 0,
       carrito: [],
-      envio: 1
+     
     }
   },
   mounted(){
@@ -81,7 +81,7 @@ export default{
     let user_data = JSON.parse(this.$store.state.user)
     this.init_carrito()
     this.venta.transaccion = this.payment_id
-    this.venta.envio = this.envio
+    this.venta.envio = this.$envio
     this.venta.cliente = user_data._id
     if(this.$route.params.direccion){
     this.direccion = this.$route.params.direccion
