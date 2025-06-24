@@ -8,35 +8,32 @@
               <div class="d-none d-md-block col-md-2 pe-0">
     <!-- Miniaturas -->
     <div>
-        <button v-for="(img, index) in galeria" 
-                :key="index" 
-                @click="galeria.unshift(galeria.splice(index, 1)[0])">
-            <img class="img-fluid" 
-                 :src="img.imagen" 
-                 :alt="'Miniatura '+(index+1)">
-        </button>
-    </div>
+  <button v-for="(img, index) in galeria" 
+          :key="index"
+          @click="galeria.unshift(galeria.splice(index, 1)[0])">
+    <img :src="img.imagen"
+         class="img-fluid"
+         style="width: 60px; border-radius: 5px; margin: 5px;"
+         :alt="'Miniatura ' + (index + 1)">
+  </button>
+</div>
 </div>
               
 
-              <div class="col-12 col-md-10 detail-carousel">
-    <div class="ribbon ribbon-info">Nuevo</div>
-    <div class="ribbon ribbon-warning">Oferta</div>
-    
-    <!-- Contenedor principal (SOLO UNO) -->
-    <div class="main-image-viewer">
-        <!-- Mostrar solo la imagen actual según índice -->
-        <div v-if="galeria[0]">
-            <a class="glightbox" 
-               :href="galeria[0].imagen" 
-               data-title="Modern Jacket 1 - Caption text" 
-               data-gallery="product-gallery">
-                <img class="img-fluid" 
-                     :src="galeria[0].imagen" 
-                     alt="Modern Jacket 1">
-            </a>
-        </div>
+        <div class="col-12 col-md-10 detail-carousel">
+  <div class="main-image-viewer">
+    <div v-if="galeria[0]">
+      <a class="glightbox"
+         :href="galeria[0].imagen"
+         data-gallery="product-gallery"
+         data-title="Imagen destacada">
+        <img :src="galeria[0].imagen"
+             class="img-fluid"
+             style="height: 650px;"
+             alt="Imagen principal">
+      </a>
     </div>
+  </div>
 </div>
             </div>
           </div>
@@ -60,12 +57,36 @@
             </div>
             <p class="text-start mb-4 text-muted">Categoria: {{ producto.categoria }} <br> Genero: {{ producto.genero }}</p>
             <div class="row">
-                <div class="text-start col-sm-6 col-lg-12 detail-option mb-3">
-                  <h6 class="detail-option-heading mb-2">talla <span>(requerido)</span></h6>
-                  <label class="btn btn-sm btn-outline-secondary detail-option-btn-label" :id="'variedad_'+item._id" :for="'variedad_'+item._id" v-for="item in variedad" v-on:click="getVariedad(item._id)"> {{item.color+'-'+item.talla }}
-                    <input class="input-invisible" type="radio" name="size" :value="item._id" :id="'variedad_'+item._id" required>
-                  </label>
-                </div>
+            <div class="text-start col-sm-6 col-lg-12 detail-option mb-3">
+  <h6 class="detail-option-heading mb-2">Colores <span>(requerido)</span></h6>
+  <label
+    class="btn btn-sm btn-outline-secondary detail-option-btn-label me-1"
+    :id="'variedad_'+item.colores._id"
+    :for="'variedad_'+item.colores._id"
+    v-for="item in variedad"
+    :key="item.colores._id"
+    @click="getColor(item.colores._id)"
+    :style="{ backgroundColor: item.colores.codigo_color, width: '20px', height: '20px' }"
+  >
+    <input class="input-invisible" type="radio" name="color" :value="item.colores._id" :id="'variedad_'+item.colores._id" required>
+  </label>
+</div>
+
+<!-- TALLAS -->
+<div class="text-start col-sm-6 col-lg-12 detail-option mb-3">
+  <h6 class="detail-option-heading mb-2">Tallas <span>(requerido)</span></h6>
+  <label
+    :id="'variedad_'+talla._id"
+    :for="'variedad_'+talla._id"
+    v-for="talla in variedad.find(v => v.colores._id === colorSeleccionado)?.tallas || []"
+    :key="talla.talla"
+    @click="getTalla(talla._id)"
+    class="btn btn-sm btn-outline-secondary detail-option-btn-label me-1"
+  >
+    <input class="input-invisible" type="radio" name="talla" :value="talla" required>
+    {{ talla.talla }}
+  </label>
+</div>
                 <div class="col-12 col-lg-6 detail-option mb-5">
                   <label class="detail-option-heading fw-bold">Cantidad <span>(requerido)</span></label>
                   <div class="d-flex align-items-center">
@@ -260,9 +281,13 @@
     
 </template>
 <style>
-.bg_variedad{
-  background: black !important;
+.bg_color{
+  color: black !important;
+  border: 2px solid black;
+}
+.bg_talla{
   color: white !important;
+  background: black;
 }
 </style>
 <script>
@@ -275,7 +300,7 @@ export default {
   name: 'detallesProductoApp',
   data(){
     return{
-      galeria:[],
+      galeria:{},
       producto: [],
       nuevos_producto: [],
       variedad: [],
@@ -286,8 +311,12 @@ export default {
       },
       msn_error: '',
       user_data : JSON.parse(this.$store.state.user),
-      gif : false
+      gif : false,
+      tallas: {},
+      colorSeleccionado: null,
+      galeriaPorColor: [],
     }
+    
   },
   watch: {
     '$route.params.slug': {  
@@ -307,10 +336,16 @@ export default {
           'Content-type': 'application/json'
         }
       }).then((result)=>{
-        this.galeria= result.data.galery
+        this.galeriaPorColor = result.data.galeriaPorColor;
+
+      // Opcional: seleccionar automáticamente el primer color
+      const primerColor = Object.keys(this.galeriaPorColor)[0];
+      if (primerColor) {
+        this.getColor(primerColor);
+      }
         this.producto = result.data.product
-        this.variedad = result.data.variety
-        console.log(this.variedad)
+        this.variedad = result.data.variedades
+        console.log(result.data.galeriaPorColor)
         this.obj_carrito.producto = this.producto._id
         this.obj_carrito.cliente = this.user_data._id
       })
@@ -331,11 +366,26 @@ export default {
     console.error("Error completo:", error)
       });
     },
-   getVariedad(value){
+   getColor(value){
+    this.colorSeleccionado = value;
+     const colorData = this.galeriaPorColor[value];
+    if (colorData && colorData.imagenes) {
+      this.galeria = colorData.imagenes.map((url) => ({ imagen: url }));
+    } else {
+      this.galeria = [];
+    }
       this.obj_carrito.variedad = value
       setTimeout(()=>{
-        $('.detail-option-btn-label').removeClass('bg_variedad')
-        $('#variedad_'+value).addClass('bg_variedad')
+        $('.detail-option-btn-label').removeClass('bg_color')
+        $('#variedad_'+value).addClass('bg_color')
+      }, 50)
+      
+    },
+    getTalla(value){
+      this.obj_carrito.variedad = value
+      setTimeout(()=>{
+        $('.detail-option-btn-label').removeClass('bg_talla')
+        $('#variedad_'+value).addClass('bg_talla')
       }, 50)
       
     },
