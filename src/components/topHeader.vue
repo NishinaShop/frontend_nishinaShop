@@ -167,9 +167,11 @@
                   data-w-id="d573f299-6765-7c8a-59e7-139abc7be21c"
                   class="nav-list"
                 >
-                  <div class="nav-icon-and-text-wrapper">
+                  <!--
+                <div class="nav-icon-and-text-wrapper">
                     <router-link class="nav-link" @click="cerrarMenu()" to="/">Mayoristas</router-link>
                   </div>
+                -->
                 </li>
               </ul>
               <div class="show-in-tablet">
@@ -281,7 +283,7 @@
                         <div class="d-flex align-items-center"><a><img class="img-fluid navbar-cart-product-image" :src="item.producto.portada" alt="..."></a>
                           <div class="w-100"><a class="navbar-cart-product-close"><i class="fa fa-times"></i></a>
                             <div class="ps-3"> <router-link class="navbar-cart-product-link" :to="{name: 'detalles_producto',params:{slug: item.producto.slug}}">{{item.producto.nombre}}</router-link> 
-                              <small class="d-block text-muted">{{item.variedad.color+'-'+item.variedad.talla}}</small>
+                              <small class="d-block text-muted">{{item.color.color+'-'+item.talla.talla}}</small>
                               <small class="d-block text-muted">Cantidad: {{item.cantidad}} </small>
                               <strong class="d-block text-sm text-end">{{convertCurrency(item.producto.precio * item.cantidad)}} </strong></div>
                           </div>
@@ -397,8 +399,10 @@
               </li>
               <!-- Multi level dropdown end-->
               
+              
               <li class="nav-item-movil ms-2"><router-link class="nav-link"  @click="cerrarMenu()" to="/">Mayoristas</router-link>
               </li>
+              
               <li class="nav-item-movil ms-2"><router-link class="nav-link"  @click="cerrarMenu()" to="/">Contacto</router-link>
               </li>
               <div class="position-absolute top-0 end-0">

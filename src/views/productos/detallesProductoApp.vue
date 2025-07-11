@@ -83,7 +83,7 @@
     @click="getTalla(talla._id)"
     class="btn btn-sm btn-outline-secondary detail-option-btn-label me-1"
   >
-    <input class="input-invisible" type="radio" name="talla" :value="talla" required>
+    <input class="input-invisible" type="radio" name="talla" :value="talla._id" required>
     {{ talla.talla }}
   </label>
 </div>
@@ -374,7 +374,7 @@ export default {
     } else {
       this.galeria = [];
     }
-      this.obj_carrito.variedad = value
+      this.obj_carrito.color = value
       setTimeout(()=>{
         $('.detail-option-btn-label').removeClass('bg_color')
         $('#variedad_'+value).addClass('bg_color')
@@ -382,7 +382,7 @@ export default {
       
     },
     getTalla(value){
-      this.obj_carrito.variedad = value
+      this.obj_carrito.talla = value
       setTimeout(()=>{
         $('.detail-option-btn-label').removeClass('bg_talla')
         $('#variedad_'+value).addClass('bg_talla')
@@ -415,8 +415,10 @@ export default {
       })
     },
     add_cart(){
-      if(!this.obj_carrito.variedad){
-        this.msn_error = 'Seleccione una variedad'
+      if(!this.obj_carrito.color){
+        this.msn_error = 'Seleccione un color'
+      }else if(!this.obj_carrito.talla){
+        this.msn_error = 'Seleccione una talla'
       }else if(!this.obj_carrito.cantidad){
         this.msn_error = 'ingrese una cantidad'
       }else if(this.obj_carrito.cantidad <= 0){
