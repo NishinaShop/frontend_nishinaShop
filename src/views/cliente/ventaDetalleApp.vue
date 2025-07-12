@@ -71,7 +71,7 @@
                   <h6 class="text-uppercase mb-0">Direccion de envio</h6>
                 </div>
                 <div class="block-body bg-light pt-1">
-                  <p>{{ venta.direccion.nombre }}<br>{{ venta.direccion.calle }} {{ venta.direccion.colonia }}<br>CP.{{ venta.direccion.codigo_postal }},<br> {{ venta.direccion.ciudad }}<br>{{ venta.direccion.estado }}<br><strong>Tel: {{ venta.direccion.n_contacto }}</strong></p>
+                  <p>{{ venta.direccion.nombre }}<br>{{ venta.direccion.calle }} {{ venta.direccion.colonia }}<br>CP.{{ venta.direccion.codigo_postal }},{{ venta.direccion.ciudad }},<br>{{ venta.direccion.estado }}<br><strong>Tel: {{ venta.direccion.n_contacto }}</strong></p>
                 </div>
               </div>
             </div>
