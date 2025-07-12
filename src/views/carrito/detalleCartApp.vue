@@ -35,7 +35,7 @@
                     <div class="row d-flex align-items-center text-center">
                       <div class="col-5">
                         <div class="d-flex align-items-center"><router-link :to="{name: 'detalles_producto',params:{slug: item.producto.slug}}"><img class="cart-item-img" :src="item.producto.portada"  alt="..."></router-link>
-                          <div class="cart-title text-start"><router-link class="text-uppercase text-dark" :to="{name: 'detalles_producto',params:{slug: item.producto.slug}}"><strong>{{ item.producto.nombre.substr(0,20) }}</strong></router-link><br><span class="text-muted text-sm">Talla: {{ item.variedad.talla }}</span><br><span class="text-muted text-sm">Color: {{ item.variedad.color }}</span>
+                          <div class="cart-title text-start"><router-link class="text-uppercase text-dark" :to="{name: 'detalles_producto',params:{slug: item.producto.slug}}"><strong>{{ item.producto.nombre.substr(0,20) }}</strong></router-link><br><span class="text-muted text-sm">Talla: {{ item.talla.talla }}</span><br><span class="text-muted text-sm">Color: {{ item.color.color }}</span>
                           </div>
                         </div>
                       </div>
@@ -83,7 +83,7 @@
                           <div class="cart-title text-start"><router-link class="text-uppercase text-dark" :to="{name: 'detalles_producto',params:{slug: item.producto.slug}}">
                             <span>{{ item.producto.nombre.substr(0,10) }}</span>
                           </router-link><br>
-                          <span class="text-muted text-sm">Talla: {{ item.variedad.talla }}</span><br><span class="text-muted text-sm">Color: {{ item.variedad.color }}</span>
+                          <span class="text-muted text-sm">Talla: {{ item.talla.talla }}</span><br><span class="text-muted text-sm">Color: {{ item.color.color }}</span>
                           <div>
                             Precio: {{convertCurrency(item.producto.precio)}}, Cantidad:  {{ item.cantidad }}
                           </div>

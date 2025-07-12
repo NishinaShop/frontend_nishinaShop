@@ -65,7 +65,7 @@
                       <div class="row d-flex align-items-center text-center">
                         <div class="col-6">
                           <div class="d-flex align-items-center"><a href="detail.html"><img class="cart-item-img" :src="item.producto.portada"  alt="..."></a>
-                            <div class="cart-title text-start"><a class="text-uppercase text-dark" href="detail.html"><strong>{{item.producto.nombre.substr(0,20)}}</strong></a><br><span class="text-muted text-sm">Talla: {{ item.variedad.talla }}</span><br><span class="text-muted text-sm">Color: {{ item.variedad.color }}</span>
+                            <div class="cart-title text-start"><a class="text-uppercase text-dark" href="detail.html"><strong>{{item.producto.nombre.substr(0,20)}}</strong></a><br><span class="text-muted text-sm">Talla: {{ item.talla.talla }}</span><br><span class="text-muted text-sm">Color: {{ item.color.color }}</span>
                             </div>
                           </div>
                         </div>
@@ -97,7 +97,7 @@
                           <div class="cart-title text-start"><router-link class="text-uppercase text-dark" :to="{name: 'detalles_producto',params:{slug: item.producto.slug}}">
                             <span>{{ item.producto.nombre.substr(0,10) }}</span>
                           </router-link><br>
-                          <span class="text-muted text-sm">Talla: {{ item.variedad.talla }}</span><br><span class="text-muted text-sm">Color: {{ item.variedad.color }}</span>
+                          <span class="text-muted text-sm">Talla: {{ item.talla.talla }}</span><br><span class="text-muted text-sm">Color: {{ item.color.color }}</span>
                           <div>
                             Precio: {{convertCurrency(item.producto.precio)}}, Cantidad:  {{ item.cantidad }}
                           </div>

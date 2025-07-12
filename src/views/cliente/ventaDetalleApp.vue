@@ -11,7 +11,7 @@
           <h3 class="mt-5">Orden #{{ n_orden.toString().padStart(6,'0') }}</h3>
           <div class="row">   
             <div class="col-xl-8 offset-xl-2"><p class="lead text-muted">La orden  #{{ n_orden.toString().padStart(6,'0') }} se realizó el <strong>{{ cDate(venta.createdAt) }}</strong> y actualmente se encuentra en <strong>{{ estado }}</strong>.</p>
-              <p class="text-muted">Si tiene alguna pregunta, no dude en<a > contactarnos</a>, nuestro centro de atención al cliente está trabajando para usted de <br> 8:00 a 7:00, Lunes a Viernes</p></div>
+              <p class="text-muted">Si tiene alguna pregunta, no dude en<a > contactarnos</a>, nuestro centro de atención al cliente está trabajando para usted de 8:00 a 7:00, Lunes a Viernes</p></div>
           </div>
         </div>
       </div>
@@ -36,7 +36,7 @@
                     <div class="row d-flex align-items-center text-center">
                       <div class="col-5">
                         <div class="d-flex align-items-center"><router-link :to="{name: 'detalles_producto',params:{slug: item.producto.slug}}"><img class="cart-item-img" :src="item.producto.portada"  alt="..."></router-link>
-                          <div class="cart-title text-start"><router-link class="text-uppercase text-dark" :to="{name: 'detalles_producto',params:{slug: item.producto.slug}}"><strong>{{ item.producto.nombre.substr(0,20) }}</strong></router-link><br><span class="text-muted text-sm">Talla: {{ item.variedad.talla }}</span><br><span class="text-muted text-sm">Color: {{ item.variedad.color }}</span>
+                          <div class="cart-title text-start"><router-link class="text-uppercase text-dark" :to="{name: 'detalles_producto',params:{slug: item.producto.slug}}"><strong>{{ item.producto.nombre.substr(0,20) }}</strong></router-link><br><span class="text-muted text-sm">Talla: {{ item.talla.talla }}</span><br><span class="text-muted text-sm">Color: {{ item.color.color }}</span>
                           </div>
                         </div>
                       </div>

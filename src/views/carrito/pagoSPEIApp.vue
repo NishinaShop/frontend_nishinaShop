@@ -149,7 +149,8 @@ console.log(this.payment_id);
               cantidad: item.cantidad,
               cliente: this.venta.cliente,
               producto: item.producto._id,
-              variedad: item.variedad._id
+              talla: item.talla._id,
+              color: item.color._id
             })
           }
           this.venta.total = this.total  
