@@ -62,7 +62,7 @@
                 <div class="py-2">
                   <p class="text-muted text-sm mb-1">{{ item.categoria }}</p>
                   <h3 class="h6 text-uppercase mb-1">
-                    <a class="text-dark" href="detail.html">{{ item.nombre }}</a>
+                    <span class="text-dark">{{ item.nombre }}</span>
                   </h3>
                   <span class="text-muted">{{ convertCurrency(item.precio) }}</span>
                 </div>
@@ -93,7 +93,7 @@
                 >
                   <a class="nav-link active"
                     ><span>Genero</span
-                    ><span class="sidebar-badge ms-2">123</span></a
+                    ><span class="sidebar-badge ms-2">4</span></a
                   >
                 </div>
                 <div class="collapse show" id="subcategories_0">
